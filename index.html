@@ -1,75 +1,170 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katik</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
-</head>
-<body>
-    <nav>
-        <h1 class="logo">Katik.</h1>
-        <a id="nav-home-button" class="navigation-link">Home</a>
-        <a id="nav-luas-button" class="navigation-link">Hitung Luas Segitiga</a>
-        <a id="nav-keliling-button" class="navigation-link">Hitung Keliling Segitiga</a>        
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ndari & Rizky Wedding</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Countdown -->
+    <link rel="stylesheet" href="Countdown/simplyCountdown.theme.default.css"/>
+    <script src="Countdown/simplyCountdown.min.js"></script>
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">     
+  </head>
+  <body>
+    <section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
+        <main>
+            <h4>Kepada Yth. Bapak/Ibu/Saudara/i,</h4>
+            <p>Mohon maaf bila ada kesalahan dalam penulisan nama/gelar</p>
+            <h1>Ndari & Rizky</h1>
+            <p>Akan melangsungkan resepsi pernikahan dalam:</p>
+            <div class="simply-countdown"></div>          
+            <a href="#home" class="btn btn-lg mt-4">Buka Undangan</a>
+        </main>
+    </section>
+
+    <nav class="navbar navbar-expand-md bg-transparent sticky-top mynavbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">N&R</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">N&R</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="#home">Home</a>
+              <a class="nav-link" href="#info">Info</a>
+              <a class="nav-link" href="#rsvp">RSVP</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
-    <header id="header">
-        <h1>Welcome to Katik</h1>
-        <p>Katik adalah website untuk menghitung luas dan keliling segitiga</p>
-        <div class="navbar">
-            <button class="button-navigasi" id="button-luas">Luas Segitiga</button>
-            <button class="button-navigasi" id="button-keliling">Keliling Segitiga</button>
+
+    <section id="home" class="home">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+            <h2>Acara pernikahan</h2>
+            <h3>Diselenggarakan pada 23 Juni 2024</h3>
+            <p>Oleh karena itu, dengan segala hormat, kami bermaksud untuk mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami</p>
+          </div>
+          <div class="row couple">
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-8 text-end">
+                  <h3>Rizqi Yohana Putra</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, fugiat earum repellat praesentium molestias architecto.</p>
+                  <p>Putra Bapak Ngadiman <br> dan <br> Ibu Muji Lestari</p>
+                </div>
+                <div class="col-4">
+                  <img src="img/rizqi.jpeg" alt="Rizki" class="img-responsive rounded-circle">
+                </div>
+              </div>
+            </div>
+            <span class="heart">
+              <i class="bi bi-heart-fill"></i>
+            </span>
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-4">
+                  <img src="img/ndari.jpeg" alt="Rizki" class="img-responsive rounded-circle">
+                </div>
+                <div class="col-8">
+                  <h3>Rr Prabandari Sekar Srikaton</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, fugiat earum repellat praesentium molestias architecto.</p>
+                  <p>Putra Bapak Praptono <br> dan <br> Ibu Rr. Sri Mulati</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
-    <main class="content-container">
-        <section id="luas-segitiga" class="luas-segitiga">
-            <h2 class="judul">Luas Segitiga</h2>
-            <img src="Segitiga.png" alt="Gambar Segitiga">
-            <section>
-                <h3>Hitung Luas Segitiga</h3>
-                <p id="rumus-luas">Rumus Luas: L = 1/2 x alas x tinggi</p>
-                <label for="input-alas" id="label-alas">Alas</label>
-                <input type="number" id="input-alas" placeholder="Nilai Alas">
-                <label for="input-tinggi" id="label-tinggi">Tinggi</label>
-                <input type="number" id="input-tinggi" placeholder="Nilai Tinggi">
-                <button id="hitung-luas-button">Hitung</button>
-                <button id="reset-luas-button">Reset</button>
-                <div id="hasil-luas"></div>
-            </section>
-        </section>
-        <section id="keliling-segitiga" class="keliling-segitiga">
-            <h2 class="judul">Keliling Segitiga</h2>
-            <img src="Segitiga.png" alt="Gambar Segitiga">
-            <section>
-                <h3>Hitung Keliling Segitiga</h3>
-                <p id="rumus-keliling">Rumus Keliling: K = sisi A + sisi B + sisi C</p>
-                <label for="input-sisi-a" id="label-sisi-a">Sisi A</label>
-                <input type="number" id="input-sisi-a" placeholder="Nilai Sisi A">
-                <label for="input-sisi-b" id="label-sisi-b">Sisi B</label>
-                <input type="number" id="input-sisi-b" placeholder="Nilai Sisi B">
-                <label for="input-sisi-c" id="label-sisi-c">Sisi C</label>
-                <input type="number" id="input-sisi-c" placeholder="Nilai Sisi C">
-                <button id="hitung-keliling-button">Hitung</button>
-                <button id="reset-keliling-button">Reset</button>
-                <div id="hasil-keliling"></div>
-            </section>
-        </section>
-    </main>    
-    <footer>
-        <div class="footer-content">
-            <div class="contact-info">
-                <p>Email: bintangberlianpratama@gmail.com</p>
-                <p>Phone: 085960419537</p>
+      </div>
+    </section>
+
+    <section id="info" class="info">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <h2>Informasi Acara</h2>
+            <p class="alamat">Alamat: Gedung Sidomukti, Jl. Nogosari Kidul No. 9 Kelurahan Kadipaten Kecamatan Kraton Yogyakarta</p>
+            <a href="" target="_blank" class="btn btn-light btn-sm my-3">Klik untuk membuka peta</a>
+            <p class="description">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba di tujuan tetapi tidak ada tanda-tanda sedang dilangsungkan pernikahan, boleh jadi Anda salah jadwal atau tempat.</p>
+          </div>
+
+          <div class="row justify-content-center mt-4">
+            <div class="col-md-5 col-10">
+              
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 Katik. All Rights Reserved.</p>
-            </div>
-            <div class="social-links">
-                <a href="https://www.instagram.com/binb92/" target="_blank">Instagram</a>
-                <a href="https://www.linkedin.com/in/bintang-berlian-pratama-8012142a3/" target="_blank">LinkedIn</a>
-            </div>
+          </div>
         </div>
-    </footer>
-</body>
+      </div>
+    </section>
+
+    <div id="audio-container">
+      <audio id="song" autoplay loop>
+        <source src="audio/SISA RASA - MAHALINI Piano Cover ( Lirik).mp3" type="audio/mp3">
+      </audio>
+      <div class="audio-icon-wrapper" style="display: none">
+        <i class="bi bi-disc"></i>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        simplyCountdown('.simply-countdown', {
+            year: 2024, // required
+            month: 6, // required
+            day: 23, // required
+            hours: 10, // Default is 0 [0-23] integer
+            words: { //words displayed into the countdown
+                days: { singular: 'hari', plural: 'hari' },
+                hours: { singular: 'jam', plural: 'jam' },
+                minutes: { singular: 'menit', plural: 'menit' },
+                seconds: { singular: 'detik', plural: 'detik' }
+            },
+            plural: true,
+            inline: false,
+            enableUtc: true,
+            onEnd: function() { return; }, // Callback on countdown end
+            refresh: 1000, // default refresh every 1s
+            sectionClass: 'simply-section',
+            amountClass: 'simply-amount',
+            wordClass: 'simply-word',
+            zeroPad: false,
+            countUp: false
+        })
+    </script>
+    <script>
+      const rootElement = document.querySelector(":root");
+      const audioIconWrapper = document.querySelector('.audio-icon-wrapper')
+      
+      window.onscroll = function() {
+        window.scrollTo(scrollTop, scrollLeft);
+      } 
+
+      rootElement.style.scrollBehaviour = 'auto'
+
+      function enableScroll() {
+        window.onscroll = function() {}
+        rootElement.style.scrollBehaviour = 'smooth';
+        playAudio();
+      }
+
+      function playAudio() {
+        const song = document.querySelector('#song');
+        song.volume = 0.1;
+        audioIconWrapper.style.display = 'flex';
+        song.play();
+        }
+    </script>
+  </body>
 </html>
