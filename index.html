@@ -23,7 +23,7 @@
             <h1>Ndari & Rizky</h1>
             <p>Akan melangsungkan resepsi pernikahan dalam:</p>
             <div class="simply-countdown"></div>          
-            <a href="#home" class="btn btn-lg mt-4">Buka Undangan</a>
+            <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll()">Buka Undangan</a>
         </main>
     </section>
 
@@ -95,19 +95,126 @@
         <div class="row justify-content-center">
           <div class="col-md-8 col-10 text-center">
             <h2>Informasi Acara</h2>
-            <p class="alamat">Alamat: Gedung Sidomukti, Jl. Nogosari Kidul No. 9 Kelurahan Kadipaten Kecamatan Kraton Yogyakarta</p>
-            <a href="" target="_blank" class="btn btn-light btn-sm my-3">Klik untuk membuka peta</a>
-            <p class="description">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba di tujuan tetapi tidak ada tanda-tanda sedang dilangsungkan pernikahan, boleh jadi Anda salah jadwal atau tempat.</p>
+            <p class="alamat">Gedung Sidomukti, Jl. Nogosari Kidul No. 9 Kelurahan Kadipaten Kecamatan Kraton Yogyakarta</p>
+            <a href="https://maps.app.goo.gl/Nvc3T1QG9PNCDYQ47" target="_blank" class="btn btn-light btn-sm my-3">Klik untuk membuka peta</a>
+            <p class="description">Dengan Tidak Mengurangi Rasa Hormat, Kami Mohon Agar Doa Restu Bapak/ Ibu/ Saudara Disampaikan di Gedung Sidomukti</p>
           </div>
 
           <div class="row justify-content-center mt-4">
             <div class="col-md-5 col-10">
-              
+              <div class="card text-center text-bg-light mb-5">
+                <div class="card-header">
+                  Akad Nikah
+                </div>
+                <div class="card-body">
+                  <div class="row justify-content-center">
+                    <div class="col-md-6">
+                      <i class="bi bi-clock d-block"></i>
+                      <span>10.00 - Selesai</span>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="bi bi-calendar d-block"></i>
+                      <span>Minggu, 23 Juni 2024</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quia dolorem velit illo laborum quis!
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 col-10">
+              <div class="card text-center text-bg-light">
+                <div class="card-header">
+                  Resepsi
+                </div>
+                <div class="card-body">
+                  <div class="row justify-content-center">
+                    <div class="col-md-6">
+                      <i class="bi bi-clock d-block"></i>
+                      <span>13.00 - 14.00</span> <br>
+                      <span>14.00 - 15.00</span>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="bi bi-calendar d-block"></i>
+                      <span>Minggu, 23 Juni 2024</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quia dolorem velit illo laborum quis!
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <section id="rsvp" class="rsvp">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <h2>Konfirmasi Kehadiran</h2>
+            <p>Isi form di bawah ini untuk melakukan konfirmasi kehadiran</p>
+          </div>
+        </div>
+      </div>
+      <form class="row row-cols-lg-auto g-3 align-items-center justify-content-center" method="POST" 
+      action="https://script.google.com/macros/s/AKfycbx6D4S-uEuJrWpkSgI2GqyYDOgI1_4o4Qo7d90z74yyBHpwtoxDVK1kGGKCVAy5DqX2mg/exec" id="my-form">
+        <div class="col-12">
+          <div class="mb-3">
+            <label for="nama" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="nama" name="Nama">
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="mb-3">
+            <label for="jumlah" class="form-label">Jumlah</label>
+            <input type="number" class="form-control" id="jumlah" name="Jumlah" min="1" length="1" value="1">
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="mb-3">
+            <label for="status" class="form-label">Konfirmasi</label>
+            <select name="Status" id="status" class="form-select">
+              <option selected>Pilih salah satu</option>
+              <option value="Hadir">Hadir</option>
+              <option value="Tidak Hadir">Tidak Hadir</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 36px;">
+          <button class="btn btn-primary">Kirim</button>
+        </div>
+      </form>
+    </section>
+    <section id="terimakasih" class="terimakasih">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <p>Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih. <br><br> Kami yang berbahagia, <br></p>
+            <h2>Ndari <br> & <br> Rizqi</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <small class="block">&copy; 2024 N&R Wedding. All Rights Reserved</small>
+            <small class="block">Made by <a href="https://www.instagram.com/magenta_craftdesign?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@magenta</a></small>
+            <ul class="mt-3">
+              <li><a href="https://www.instagram.com/magenta_craftdesign?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="bi bi-instagram"></i></a></li>
+              <li><a href="" target="_blank"><i class="bi bi-facebook"></i></a></li>
+              <li><a href="" target="_blank"><i class="bi bi-tiktok"></i></a></li>
+              <li><a href="" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <div id="audio-container">
       <audio id="song" autoplay loop>
@@ -144,27 +251,66 @@
         })
     </script>
     <script>
-      const rootElement = document.querySelector(":root");
-      const audioIconWrapper = document.querySelector('.audio-icon-wrapper')
-      
-      window.onscroll = function() {
-        window.scrollTo(scrollTop, scrollLeft);
-      } 
+      const stickyTop = document.querySelector('.sticky-top');
+      const offcanvas = document.querySelector('.offcanvas');
 
-      rootElement.style.scrollBehaviour = 'auto'
+      offcanvas.addEventListener('show.bs.offcanvas', function() {
+        stickyTop.style.overflow = 'visible';
+      });
+
+      offcanvas.addEventListener('hidden.bs.offcanvas', function() {
+        stickyTop.style.overflow = 'hidden';
+      });
+    </script>
+    <script>
+      const rootElement = document.querySelector(":root");
+      function disableScroll () {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        
+        window.onscroll = function () {
+          window.scrollTo(scrollTop, screenLeft);
+        }
+        
+        rootElement.style.scrollBehavior = 'auto';
+      }
 
       function enableScroll() {
-        window.onscroll = function() {}
-        rootElement.style.scrollBehaviour = 'smooth';
+        window.onscroll = function() {
+        rootElement.style.scrollBehavior = 'smooth';
         playAudio();
+        }
       }
+   
+      disableScroll();
+
+      const audioIconWrapper = document.querySelector('.audio-icon-wrapper')
+
+
 
       function playAudio() {
         const song = document.querySelector('#song');
-        song.volume = 0.1;
+        song.volume = 0.5;
         audioIconWrapper.style.display = 'flex';
         song.play();
         }
+    </script>
+    <script>
+      window.addEventListener("load", function() {
+        const form = document.getElementById('my-form');
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          const action = e.target.action;
+          fetch(action, {
+            method: 'POST',
+            body: data,
+          })
+          .then(() => {
+            alert("Konfirmasi Kehadiran Berhasil Terkirim!");
+          })
+        });
+      });
     </script>
   </body>
 </html>
