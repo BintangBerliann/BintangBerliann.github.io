@@ -18,7 +18,7 @@
   <body>
     <section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
         <main>
-            <h4>Kepada Yth. Bapak/Ibu/Saudara/i,</h4>
+            <h4>Kepada Yth. Bapak/Ibu/Saudara/i, <span></span></h4>
             <p>Mohon maaf bila ada kesalahan dalam penulisan nama/gelar</p>
             <h1>Ndari & Rizky</h1>
             <p>Akan melangsungkan resepsi pernikahan dalam:</p>
@@ -96,6 +96,7 @@
           <div class="col-md-8 col-10 text-center">
             <h2>Informasi Acara</h2>
             <p class="alamat">Gedung Sidomukti, Jl. Nogosari Kidul No. 9 Kelurahan Kadipaten Kecamatan Kraton Yogyakarta</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.805693143318!2d110.3570209!3d-7.810383099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57930d7ec3c1%3A0x4ddb8d63788c8133!2sGEDUNG%20SIDO%20MUKTI!5e0!3m2!1sen!2sid!4v1718024194654!5m2!1sen!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <a href="https://maps.app.goo.gl/Nvc3T1QG9PNCDYQ47" target="_blank" class="btn btn-light btn-sm my-3">Klik untuk membuka peta</a>
             <p class="description">Dengan Tidak Mengurangi Rasa Hormat, Kami Mohon Agar Doa Restu Bapak/ Ibu/ Saudara Disampaikan di Gedung Sidomukti</p>
           </div>
@@ -264,6 +265,11 @@
     </script>
     <script>
       const rootElement = document.querySelector(":root");
+      const audioIconWrapper = document.querySelector('.audio-icon-wrapper')
+      const audioIcon = document.querySelector('.audio-icon-wrapper i')
+      let isPlaying = false;
+      const song = document.querySelector('#song');
+
       function disableScroll () {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
@@ -284,16 +290,26 @@
    
       disableScroll();
 
-      const audioIconWrapper = document.querySelector('.audio-icon-wrapper')
-
-
 
       function playAudio() {
-        const song = document.querySelector('#song');
         song.volume = 0.5;
         audioIconWrapper.style.display = 'flex';
         song.play();
+        isPlaying = true;
         }
+
+      audioIconWrapper.onclick = function() {
+        if(isPlaying) {
+          song.pause();
+          audioIcon.classList.remove('bi-disc')
+          audioIcon.classList.add('bi-pause-circle')
+          } else {
+            song.play()
+            audioIcon.classList.add('bi-disc')
+            audioIcon.classList.remove('bi-pause-circle')
+        }
+        isPlaying = !isPlaying;
+      }
     </script>
     <script>
       window.addEventListener("load", function() {
@@ -311,6 +327,15 @@
           })
         });
       });
+    </script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get('nama');
+
+      const namaContainer = document.querySelector('.hero h4 span');
+      namaContainer.innerText = nama;
+
+      document.querySelector('#Nama').value = nama;
     </script>
   </body>
 </html>
