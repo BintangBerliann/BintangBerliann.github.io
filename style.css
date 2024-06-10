@@ -263,23 +263,6 @@ footer li {
     margin: 0.3rem;
 }
 
-/* Tambahkan ini ke style.css atau dalam tag <style> di HTML */
-.navbar-toggler {
-    border: none;
-  }
-  
-  .navbar-toggler-icon {
-    width: 30px;
-    height: 30px;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  
-  .offcanvas-header .btn-close {
-    display: none;
-  }
-  
-
 /* Media Query */
 /* Extra Large */
 @media (max-width: 1200px) {
@@ -350,5 +333,9 @@ footer li {
 
     .home .couple .col-lg-6 {
         margin-bottom: 30px; /* Menambah margin bottom untuk setiap pasangan */
+    }
+
+    .sticky-top {
+        overflow: hidden;
     }
 }
