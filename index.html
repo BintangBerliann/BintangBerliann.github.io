@@ -23,7 +23,7 @@
             <h1>Ndari & Rizky</h1>
             <p>Akan melangsungkan resepsi pernikahan dalam:</p>
             <div class="simply-countdown"></div>          
-            <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll()">Buka Undangan</a>
+            <a href="#home" class="btn btn-lg mt-4 btn-primary btn-fixed-size" onclick="enableScroll()">Buka Undangan</a>
         </main>
     </section>
 
@@ -269,26 +269,12 @@
       let isPlaying = false;
       const song = document.querySelector('#song');
 
-      function disableScroll () {
-        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        
-        window.onscroll = function () {
-          window.scrollTo(scrollTop, screenLeft);
-        }
-        
-        rootElement.style.scrollBehavior = 'auto';
-      }
-
       function enableScroll() {
         window.onscroll = function() {
         rootElement.style.scrollBehavior = 'smooth';
         playAudio();
         }
       }
-   
-      disableScroll();
-
 
       function playAudio() {
         song.volume = 0.5;

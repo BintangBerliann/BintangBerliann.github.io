@@ -287,7 +287,13 @@ footer li {
     .home .heart {
         display: none;
     }
-}
+
+    form {
+        padding: 15px;
+        margin: 15px;
+      }
+    }
+
 /* Tablet */
 @media (max-width: 768px) {
     html {
@@ -315,7 +321,13 @@ footer li {
     .home .couple .col-lg-6 {
         margin-bottom: 30px; /* Menambah margin bottom untuk setiap pasangan */
     }
-}
+
+    form {
+        padding: 15px;
+        margin: 15px;
+      }
+    }
+
 /* Mobile phone */
 @media (max-width: 576px) {
     html {
@@ -338,4 +350,22 @@ footer li {
     .sticky-top {
         overflow: hidden;
     }
-}
+
+    form {
+        padding: 10px;
+        margin: 10px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-control {
+        font-size: 14px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 10px;
+      }
+    }
