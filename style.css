@@ -331,6 +331,10 @@ footer li {
         padding: 15px;
         margin: 15px;
       }
+
+    .navbar-toggler {
+        display: none;
+    }
     }
 
 /* Mobile phone */
@@ -378,4 +382,7 @@ footer li {
     padding: 5px 10px;
     font-size: 14px;
     }
+    .navbar-toggler {
+        display: none;
     }
+}
