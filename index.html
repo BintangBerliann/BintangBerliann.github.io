@@ -350,7 +350,7 @@
         #character-me {
             position: fixed;
             bottom: 38%;
-            left: 46%; /* Dibuat lebih dekat */
+            left: 48%; /* Dibuat lebih dekat lagi */
             transform: translateX(-50%);
             z-index: 1000;
             width: 200px;
@@ -363,7 +363,7 @@
         #character-her {
             position: fixed;
             bottom: 38%;
-            left: 54%; /* Dibuat lebih dekat */
+            left: 52%; /* Dibuat lebih dekat lagi */
             transform: translateX(-50%);
             z-index: 1000;
             width: 200px;
@@ -384,23 +384,6 @@
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
         }
-        
-        /* Hand holding connection */
-        #hand-connection {
-            position: fixed;
-            bottom: 48%; /* Disesuaikan dengan posisi tangan karakter */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px; /* Lebar dari 'gandengan tangan' */
-            height: 10px; /* Tinggi dari 'gandengan tangan' */
-            z-index: 1001; /* Di atas karakter */
-            background-color: #FFDBAC; /* Warna kulit */
-            border: 2px solid #8B4513; /* Outline */
-            border-radius: 5px;
-            transition: transform 0.1s ease-out;
-            opacity: 0; /* Awalnya disembunyikan */
-        }
-
 
         /* Auto-scroll controls */
         .controls {
@@ -493,12 +476,12 @@
 
             #character-me {
                 bottom: 35%;
-                left: 42%;
+                left: 46%;
             }
 
             #character-her {
                 bottom: 35%;
-                left: 58%;
+                left: 54%;
             }
 
             .character-sprite {
@@ -530,8 +513,6 @@
         <button class="control-button" onclick="toggleAutoWalk(event)">▶️ Start Walking</button>
         <button class="control-button" onclick="resetJourney()">🏠 Back to Start</button>
     </div>
-
-    <div id="hand-connection"></div>
 
     <div id="character-me">
         <img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" />
@@ -603,7 +584,6 @@
         const characterHerSprite = document.getElementById('character-her-sprite');
         const world = document.getElementById('world');
         const progressBar = document.getElementById('progress-bar');
-        const handConnection = document.getElementById('hand-connection');
 
         // Start the journey (hide welcome screen)
         function startJourney() {
@@ -625,23 +605,17 @@
                 isAutoWalking = true;
                 button.textContent = '⏸️ Pause Walking';
                 button.classList.add('active');
-                handConnection.style.opacity = 1; // Tampilkan gandengan tangan
 
                 autoWalkInterval = setInterval(() => {
                     if (currentPosition < maxScroll) {
                         currentPosition += 3; // Walking speed
                         window.scrollTo(currentPosition, 0);
-
-                        // Update walking animation
                         updateWalkingAnimation();
-
-                        // Update progress
                         updateProgress();
                     } else {
-                        // Reached the end
                         toggleAutoWalk();
                     }
-                }, 150); // Kecepatan interval diubah agar animasi lebih terlihat
+                }, 150);
 
             } else {
                 // Stop auto-walking
@@ -649,34 +623,26 @@
                 button.textContent = '▶️ Start Walking';
                 button.classList.remove('active');
                 clearInterval(autoWalkInterval);
-                handConnection.style.opacity = 0; // Sembunyikan gandengan tangan
             }
         }
 
         // Update walking animation for both characters
         function updateWalkingAnimation() {
             frameIndex = (frameIndex + 1) % 4;
-
-            // Update both characters
             characterMeSprite.src = meWalkingFrames[frameIndex];
             characterHerSprite.src = herWalkingFrames[frameIndex];
 
-            // Add walking bounce effect with hand connection animation
-            const bounce = 'scaleY(1.05) translateY(-3px)';
-            characterMeSprite.style.transform = bounce;
-            characterHerSprite.style.transform = bounce;
+            const bounce = 'translateY(-4px)';
+            const normal = 'translateY(0)';
             
-            // Animate hand connection
+            // Apply bounce effect on alternate frames
             if (frameIndex === 1 || frameIndex === 3) {
-                handConnection.style.transform = 'translateX(-50%) translateY(-2px)';
+                characterMeSprite.style.transform = bounce;
+                characterHerSprite.style.transform = bounce;
             } else {
-                handConnection.style.transform = 'translateX(-50%) translateY(0px)';
+                 characterMeSprite.style.transform = normal;
+                 characterHerSprite.style.transform = normal;
             }
-
-            setTimeout(() => {
-                characterMeSprite.style.transform = 'scaleY(1) translateY(0)';
-                characterHerSprite.style.transform = 'scaleY(1) translateY(0)';
-            }, 100);
         }
 
         // Update progress bar
@@ -690,7 +656,6 @@
             if (isAutoWalking) {
                 toggleAutoWalk();
             }
-
             currentPosition = 0;
             window.scrollTo(0, 0);
             frameIndex = 0;
@@ -710,22 +675,17 @@
         // Enhanced character placeholders with pixel art style
         function createCharacterPlaceholder(canvas, isFemale = false) {
             const ctx = canvas.getContext('2d');
-            ctx.imageSmoothingEnabled = false; // Pixel art style
+            ctx.imageSmoothingEnabled = false;
             const w = canvas.width;
             const h = canvas.height;
             ctx.clearRect(0, 0, w, h);
 
-            // Character colors
+            // Colors
             const skinColor = '#f2d3b1';
-            const skinShadow = '#e3b990';
             const hairColor = isFemale ? '#6d4c41' : '#3e2723';
-            const hairShine = isFemale ? '#8d6e63' : '#5d4037';
             const shirtColor = isFemale ? '#ff80ab' : '#4fc3f7';
-            const shirtShadow = isFemale ? '#c5497b' : '#039be5';
             const pantsColor = isFemale ? '#7e57c2' : '#5c6bc0';
-            const pantsShadow = isFemale ? '#4d2c91' : '#3949ab';
             const shoeColor = '#8d6e63';
-            const shoeShadow = '#5d4037';
             
             const scale = 4;
             const offsetX = w / 2;
@@ -736,58 +696,59 @@
                 ctx.fillRect(Math.floor(x), Math.floor(y), Math.floor(w), Math.floor(h));
             };
 
-            // Walking animation state
             const walkCycle = frameIndex % 4;
             let legOffset1 = 0, legOffset2 = 0;
-            let armOffset = 0;
+            let armSwing = 0;
+            let bodyBounce = (walkCycle === 1 || walkCycle === 3) ? -1 * scale : 0;
 
-            if (walkCycle === 1) { armOffset = 1 * scale; legOffset1 = 2 * scale; legOffset2 = -2 * scale; }
-            if (walkCycle === 3) { armOffset = -1 * scale; legOffset1 = -2 * scale; legOffset2 = 2 * scale; }
+            if (walkCycle === 1) { legOffset1 = 2 * scale; legOffset2 = -2 * scale; armSwing = 1 * scale; }
+            if (walkCycle === 3) { legOffset1 = -2 * scale; legOffset2 = 2 * scale; armSwing = -1 * scale; }
+            
+            const currentOffsetY = offsetY + bodyBounce;
 
             // Head
-            drawPixelRect(offsetX - 5 * scale, offsetY, 10 * scale, 10 * scale, skinColor);
-            drawPixelRect(offsetX - 4 * scale, offsetY - 1 * scale, 8 * scale, 1 * scale, skinColor);
-            drawPixelRect(offsetX - 4 * scale, offsetY + 10 * scale, 8 * scale, 1 * scale, skinColor);
+            drawPixelRect(offsetX - 5 * scale, currentOffsetY, 10 * scale, 10 * scale, skinColor);
+            drawPixelRect(offsetX - 4 * scale, currentOffsetY - 1 * scale, 8 * scale, 1 * scale, skinColor);
+            drawPixelRect(offsetX - 4 * scale, currentOffsetY + 10 * scale, 8 * scale, 1 * scale, skinColor);
             
             // Hair
-            drawPixelRect(offsetX - 5 * scale, offsetY - 3 * scale, 10 * scale, 4 * scale, hairColor);
-            drawPixelRect(offsetX - 4 * scale, offsetY - 4 * scale, 8 * scale, 1 * scale, hairColor);
-            drawPixelRect(offsetX - 6 * scale, offsetY - 2 * scale, 1 * scale, 5 * scale, hairColor);
-            drawPixelRect(offsetX + 5 * scale, offsetY - 2 * scale, 1 * scale, 5 * scale, hairColor);
-            drawPixelRect(offsetX - 5 * scale, offsetY, 3 * scale, 1 * scale, hairShine); // Shine
-
+            drawPixelRect(offsetX - 5 * scale, currentOffsetY - 3 * scale, 10 * scale, 4 * scale, hairColor);
+            drawPixelRect(offsetX - 4 * scale, currentOffsetY - 4 * scale, 8 * scale, 1 * scale, hairColor);
             if (isFemale) { // Long hair
-                drawPixelRect(offsetX + 5 * scale, offsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
-                drawPixelRect(offsetX - 7 * scale, offsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
+                drawPixelRect(offsetX + 5 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
+                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
             }
             
             // Eyes
-            drawPixelRect(offsetX - 3 * scale, offsetY + 3 * scale, 2 * scale, 2 * scale, '#fff');
-            drawPixelRect(offsetX + 1 * scale, offsetY + 3 * scale, 2 * scale, 2 * scale, '#fff');
-            drawPixelRect(offsetX - 2 * scale, offsetY + 4 * scale, 1 * scale, 1 * scale, '#000');
-            drawPixelRect(offsetX + 2 * scale, offsetY + 4 * scale, 1 * scale, 1 * scale, '#000');
+            drawPixelRect(offsetX - 3 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000');
+            drawPixelRect(offsetX + 1 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000');
 
             // Body
-            drawPixelRect(offsetX - 4 * scale, offsetY + 11 * scale, 8 * scale, 7 * scale, shirtColor);
-            drawPixelRect(offsetX - 4 * scale, offsetY + 17 * scale, 8 * scale, 1 * scale, shirtShadow);
-            
-            // Arms
-            // Right arm (character's right, screen left)
-            drawPixelRect(offsetX - 7 * scale, offsetY + 11 * scale - (armOffset > 0 ? armOffset/2 : 0), 3 * scale, 6 * scale + Math.abs(armOffset), skinColor);
-            // Left arm (character's left, screen right) - this is the hand-holding arm, keep it more static
-            drawPixelRect(offsetX + 4 * scale, offsetY + 11 * scale, 3 * scale, 5 * scale, skinColor);
-            drawPixelRect(offsetX + 5 * scale, offsetY + 16 * scale, 1 * scale, 1 * scale, skinShadow);
+            drawPixelRect(offsetX - 4 * scale, currentOffsetY + 11 * scale, 8 * scale, 7 * scale, shirtColor);
             
             // Pants
-            drawPixelRect(offsetX - 4 * scale, offsetY + 18 * scale, 8 * scale, 4 * scale, pantsColor);
+            drawPixelRect(offsetX - 4 * scale, currentOffsetY + 18 * scale, 8 * scale, 4 * scale, pantsColor);
 
             // Legs
-            // Left leg
-            drawPixelRect(offsetX - 4 * scale, offsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
-            drawPixelRect(offsetX - 4 * scale + legOffset1, offsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
-            // Right leg
-            drawPixelRect(offsetX + 1 * scale, offsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
-            drawPixelRect(offsetX + 1 * scale + legOffset2, offsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
+            drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
+            drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
+            drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
+            drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
+            
+            // Arms
+            if (isFemale) {
+                // Right arm (holding hand)
+                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor);
+                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor);
+                // Left arm (swinging)
+                drawPixelRect(offsetX + 4 * scale, currentOffsetY + 11 * scale + armSwing, 3 * scale, 6 * scale, skinColor);
+            } else { // Male
+                // Left arm (holding hand)
+                drawPixelRect(offsetX + 3 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor);
+                drawPixelRect(offsetX + 4 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor);
+                // Right arm (swinging)
+                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale - armSwing, 3 * scale, 6 * scale, skinColor);
+            }
         }
 
         // Handle image loading errors for both characters
