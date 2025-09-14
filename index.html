@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday - Walking Through Memories Together</title>
+    <title>Happy Birthday Pia</title>
     <style>
         /* Reset and base styles */
         * {
@@ -651,14 +651,23 @@
             characterMeSprite.src = meWalkingFrames[frameIndex];
             characterHerSprite.src = herWalkingFrames[frameIndex];
             
-            // Add walking bounce effect
+            // Add walking bounce effect with hand connection animation
             const bounce = 'scaleY(1.05) translateY(-3px)';
             characterMeSprite.style.transform = bounce;
             characterHerSprite.style.transform = bounce;
             
+            // Animate hand connection
+            const handConnection = document.getElementById('hand-connection');
+            if (frameIndex === 1 || frameIndex === 3) {
+                handConnection.style.transform = 'translateX(-50%) translateY(-2px)';
+            } else {
+                handConnection.style.transform = 'translateX(-50%) translateY(0px)';
+            }
+            
             setTimeout(() => {
                 characterMeSprite.style.transform = 'scaleY(1) translateY(0)';
                 characterHerSprite.style.transform = 'scaleY(1) translateY(0)';
+                handConnection.style.transform = 'translateX(-50%) translateY(0px)';
             }, 100);
         }
         
