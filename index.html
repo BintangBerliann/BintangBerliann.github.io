@@ -135,7 +135,7 @@
             overflow: hidden;
         }
 
-        /* ==== BACKGROUND BARU ==== */
+        /* ==== BACKGROUNDS ==== */
 
         /* Scene 1 & 2: Ruang Kelas */
         .scene:nth-child(1), .scene:nth-child(2) {
@@ -153,6 +153,7 @@
             border: 15px solid #5d4037; /* Frame kayu */
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 1; /* Papan tulis di belakang teks */
         }
 
         /* Scene 3: Bioskop */
@@ -201,19 +202,51 @@
         .scene:nth-child(6) {
              background-color: #E5DDD5;
              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cg id='a'%3E%3Cpath fill='%23d9d2c5' d='M27.2 113.7c-3-3-3-7.8 0-10.8l83.2-83.2c3-3 7.8-3 10.8 0s3 7.8 0 10.8L38 113.7c-3 3-7.8 3-10.8 0z'/%3E%3Cpath fill='%23e0d8cb' d='M113.7 172.8c-3-3-7.8-3-10.8 0L19.7 89.6c-3-3-3-7.8 0-10.8s7.8-3 10.8 0l83.2 83.2c3 3 3 7.8 0 10.8z'/%3E%3Cpath fill='%23d9d2c5' d='M108.5 108.5c-1.5-1.5-1.5-3.9 0-5.4l49.5-49.5c1.5-1.5 3.9-1.5 5.4 0s1.5 3.9 0 5.4l-49.5 49.5c-1.5 1.5-3.9 1.5-5.4 0z'/%3E%3Cpath fill='%23d4ccc0' d='M158 158c-1.5-1.5-3.9-1.5-5.4 0l-49.5-49.5c-1.5-1.5-1.5-3.9 0-5.4s3.9-1.5 5.4 0l49.5 49.5c1.5 1.5 1.5 3.9 0 5.4z'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23a' x='-100' y='-100'/%3E%3Cuse href='%23a' x='-100' y='0'/%3E%3Cuse href='%23a' x='0' y='-100'/%3E%3Cuse href='%23a' x='0' y='0'/%3E%3C/svg%3E");
-             color: #121212; /* Warna teks jadi gelap agar terbaca */
+             color: #121212;
         }
-        /* Style khusus untuk chat bubble di scene 6 */
         .scene:nth-child(6) .scene-text {
-            background: #DCF8C6; /* Warna bubble chat hijau */
-            border-radius: 15px 15px 0 15px; /* Bentuk bubble */
+            background: #DCF8C6; border-radius: 15px 15px 0 15px;
         }
-        .scene:nth-child(6) h1, .scene:nth-child(6) p {
-            color: #121212;
-            text-shadow: none;
-        }
+        .scene:nth-child(6) h1, .scene:nth-child(6) p { color: #121212; text-shadow: none; }
 
-        /* ==== AKHIR BACKGROUND BARU ==== */
+        /* ==== AKHIR BACKGROUNDS ==== */
+
+        /* ==== PLACEHOLDER GAMBAR BARU ==== */
+        .image-placeholder {
+            position: absolute;
+            top: 18%; /* Sedikit turun agar pas di papan tulis */
+            right: 15%; /* Sedikit ke kiri */
+            width: 250px;
+            height: 200px;
+            background-color: #f5f5f5; /* Warna dasar foto */
+            padding: 15px;
+            padding-bottom: 40px; /* Ruang untuk caption di bawah */
+            border-radius: 3px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            transform: rotate(7deg); /* Miring ke kanan */
+            z-index: 2; /* Di atas papan tulis */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            color: #aaa;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        /* Efek selotip */
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 25px;
+            background: rgba(255, 255, 0, 0.4); /* Warna selotip kekuningan transparan */
+            border-left: 1px dashed rgba(0,0,0,0.2);
+            border-right: 1px dashed rgba(0,0,0,0.2);
+        }
 
         .scene-text {
             position: relative;
@@ -226,24 +259,24 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
+        .scene h1, .scene p {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
         .scene h1 {
             font-size: 3.5rem;
             margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            opacity: 0;
             transform: translateY(30px);
-            animation: fadeInUp 1s ease-out forwards;
         }
-
         .scene p {
             font-size: 1.4rem;
             line-height: 1.8;
             max-width: 600px;
             margin-bottom: 20px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 1s ease-out 0.3s forwards;
+            animation-delay: 0.3s;
         }
 
         #character-me, #character-her {
@@ -267,8 +300,6 @@
             filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
             transition: transform 0.15s ease-out;
             image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
         }
         
         .reset-button {
@@ -292,6 +323,7 @@
             #character-her { left: 54%; }
             .character-sprite { width: 120px; height: 120px; }
             .scene-text { padding: 20px; margin-top: 20px; }
+            .image-placeholder { width: 150px; height: 120px; padding: 10px; padding-bottom: 25px; font-size: 1rem;}
         }
     </style>
 </head>
@@ -307,13 +339,11 @@
     </div>
 
     <div class="progress-bar" id="progress-bar"></div>
-
     <button class="reset-button" id="reset-button" onclick="resetJourney()">🏠 Kembali ke Awal</button>
 
     <div id="character-me">
         <img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" />
     </div>
-
     <div id="character-her">
         <img class="character-sprite" id="character-her-sprite" src="images/her_walk1.png" alt="Her walking" />
     </div>
@@ -328,6 +358,7 @@
         </section>
 
         <section class="scene">
+            <div class="image-placeholder">Letakkan foto<br>kenangan di sini!</div>
             <div class="scene-text">
                 <h1>Chapter 2: Ujian & Dukungan</h1>
                 <p>Setiap ujian dan tugas berat terasa lebih ringan karena kita menghadapinya bersama. Kamu adalah partner belajar terbaik.</p>
@@ -369,28 +400,24 @@
     </div>
 
     <script>
+        // Script tidak berubah dari versi sebelumnya, jadi disingkat untuk kejelasan.
+        // Cukup salin seluruh blok kode di atas, script lengkap sudah termasuk.
         const meWalkingFrames = [ 'images/me_walk1.png', 'images/me_walk2.png', 'images/me_walk3.png', 'images/me_walk4.png' ];
         const herWalkingFrames = [ 'images/her_walk1.png', 'images/her_walk2.png', 'images/her_walk3.png', 'images/her_walk4.png' ];
-
         let frameIndex = 0, walkInterval, currentPosition = 0;
-        // Kalkulasi maxScroll dibuat dinamis untuk mengakomodasi jumlah scene baru
         let maxScroll = document.getElementById('world').scrollWidth - window.innerWidth; 
         const walkSpeed = 4;
         let keysPressed = {};
-
         const characterMeSprite = document.getElementById('character-me-sprite');
         const characterHerSprite = document.getElementById('character-her-sprite');
         const progressBar = document.getElementById('progress-bar');
-        
         function startJourney() {
             document.getElementById('welcome-screen').classList.add('hidden');
             document.getElementById('reset-button').style.display = 'block';
             document.getElementById('progress-bar').style.display = 'block';
-            // Update maxScroll setelah halaman dimuat penuh
             maxScroll = document.getElementById('world').scrollWidth - window.innerWidth;
             setTimeout(() => { document.getElementById('welcome-screen').style.display = 'none'; }, 1000);
         }
-
         function startWalkingAnimation() {
             if (walkInterval) return;
             walkInterval = setInterval(() => {
@@ -407,7 +434,6 @@
                 }
             }, 150);
         }
-        
         function stopWalkingAnimation() {
             clearInterval(walkInterval);
             walkInterval = null;
@@ -417,7 +443,6 @@
             characterMeSprite.style.transform = 'translateY(0)';
             characterHerSprite.style.transform = 'translateY(0)';
         }
-
         function move() {
             if (keysPressed['ArrowRight']) { currentPosition = Math.min(currentPosition + walkSpeed, maxScroll); }
             if (keysPressed['ArrowLeft']) { currentPosition = Math.max(currentPosition - walkSpeed, 0); }
@@ -425,7 +450,6 @@
             updateProgress();
             if (keysPressed['ArrowRight'] || keysPressed['ArrowLeft']) { requestAnimationFrame(move); }
         }
-        
         document.addEventListener('keydown', (event) => {
             if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
                 if (!keysPressed[event.key]) {
@@ -435,7 +459,6 @@
                 }
             }
         });
-        
         document.addEventListener('keyup', (event) => {
             if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
                 keysPressed[event.key] = false;
@@ -444,45 +467,28 @@
                 }
             }
         });
-
-        function updateProgress() {
-            progressBar.style.width = Math.min((currentPosition / maxScroll) * 100, 100) + '%';
-        }
-
+        function updateProgress() { progressBar.style.width = Math.min((currentPosition / maxScroll) * 100, 100) + '%'; }
         function resetJourney() {
             currentPosition = 0;
             window.scrollTo(0, 0);
             updateProgress();
             if(walkInterval) stopWalkingAnimation();
         }
-
-        window.addEventListener('scroll', () => {
-            currentPosition = window.scrollX;
-            updateProgress();
-        });
-
+        window.addEventListener('scroll', () => { currentPosition = window.scrollX; updateProgress(); });
         function createCharacterPlaceholder(canvas, isFemale = false) {
             const ctx = canvas.getContext('2d');
             ctx.imageSmoothingEnabled = false;
             const w = canvas.width, h = canvas.height;
             ctx.clearRect(0, 0, w, h);
-
             const skinColor = '#f2d3b1', hairColor = isFemale ? '#6d4c41' : '#3e2723',
                   shirtColor = isFemale ? '#ff80ab' : '#4fc3f7', pantsColor = isFemale ? '#7e57c2' : '#5c6bc0',
                   shoeColor = '#8d6e63', scale = 4, offsetX = w / 2, offsetY = 20;
-
-            const drawPixelRect = (x, y, w, h, color) => {
-                ctx.fillStyle = color;
-                ctx.fillRect(Math.floor(x), Math.floor(y), Math.floor(w), Math.floor(h));
-            };
-
+            const drawPixelRect = (x, y, w, h, color) => { ctx.fillStyle = color; ctx.fillRect(Math.floor(x), Math.floor(y), Math.floor(w), Math.floor(h)); };
             const walkCycle = frameIndex % 4;
             let legOffset1 = 0, legOffset2 = 0, armSwing = 0;
             let bodyBounce = (walkCycle === 1 || walkCycle === 3) ? -1 * scale : 0;
-
             if (walkCycle === 1) { legOffset1 = 2 * scale; legOffset2 = -2 * scale; armSwing = 1 * scale; }
             if (walkCycle === 3) { legOffset1 = -2 * scale; legOffset2 = 2 * scale; armSwing = -1 * scale; }
-            
             const currentOffsetY = offsetY + bodyBounce;
             drawPixelRect(offsetX - 5 * scale, currentOffsetY, 10 * scale, 10 * scale, skinColor);
             drawPixelRect(offsetX - 4 * scale, currentOffsetY - 1 * scale, 8 * scale, 1 * scale, skinColor);
@@ -501,7 +507,6 @@
             drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
             drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
             drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
-            
             if (isFemale) {
                 drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor);
                 drawPixelRect(offsetX - 7 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor);
@@ -512,10 +517,8 @@
                 drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale - armSwing, 3 * scale, 6 * scale, skinColor);
             }
         }
-
         characterMeSprite.addEventListener('error', function() { const c = document.createElement('canvas'); c.width=160; c.height=160; createCharacterPlaceholder(c, false); this.src=c.toDataURL(); });
         characterHerSprite.addEventListener('error', function() { const c = document.createElement('canvas'); c.width=160; c.height=160; createCharacterPlaceholder(c, true); this.src=c.toDataURL(); });
-
         characterMeSprite.src = meWalkingFrames[0];
         characterHerSprite.src = herWalkingFrames[0];
     </script>
