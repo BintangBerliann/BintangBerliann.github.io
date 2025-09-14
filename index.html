@@ -617,25 +617,25 @@
 
         // Fungsi untuk pergerakan
         function move() {
-            if (keysPressed['ArrowRight']) {
+            if (keysPressed['d']) {
                 currentPosition = Math.min(currentPosition + walkSpeed, maxScroll);
                 window.scrollTo(currentPosition, 0);
             }
-            if (keysPressed['ArrowLeft']) {
+            if (keysPressed['a']) {
                 currentPosition = Math.max(currentPosition - walkSpeed, 0);
                 window.scrollTo(currentPosition, 0);
             }
             updateProgress();
             
             // Terus panggil move jika ada tombol yang ditekan
-            if (keysPressed['ArrowRight'] || keysPressed['ArrowLeft']) {
+            if (keysPressed['d'] || keysPressed['a']) {
                  requestAnimationFrame(move);
             }
         }
         
         // Event listener untuk tombol ditekan
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            if (event.key === 'a' || event.key === 'd') {
                 if (!keysPressed[event.key]) { // Hanya mulai jika ini tekanan pertama
                      keysPressed[event.key] = true;
                      startWalkingAnimation();
@@ -646,10 +646,10 @@
         
         // Event listener untuk tombol dilepas
         document.addEventListener('keyup', (event) => {
-            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            if (event.key === 'a' || event.key === 'd') {
                 keysPressed[event.key] = false;
                 // Hanya berhenti jika tidak ada tombol panah lain yang ditekan
-                if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight']) {
+                if (!keysPressed['a'] && !keysPressed['d']) {
                     stopWalkingAnimation();
                 }
             }
