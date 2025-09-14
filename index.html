@@ -151,7 +151,7 @@
             left: 0;
             right: 0;
             height: 60px;
-            background: 
+            background:
                 repeating-linear-gradient(
                     90deg,
                     #8B4513 0px,
@@ -170,7 +170,7 @@
             left: 0;
             right: 0;
             height: 30%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, #228B22 20px, transparent 21px),
                 radial-gradient(circle at 60% 85%, #32CD32 15px, transparent 16px),
                 radial-gradient(circle at 80% 75%, #228B22 25px, transparent 26px),
@@ -190,7 +190,7 @@
             left: 0;
             right: 0;
             height: 40px;
-            background: 
+            background:
                 repeating-linear-gradient(
                     90deg,
                     #696969 0px,
@@ -211,7 +211,7 @@
             left: 0;
             right: 0;
             height: 35%;
-            background: 
+            background:
                 linear-gradient(90deg, #8B8B8B 0px, #8B8B8B 8px, transparent 8px, transparent 12px),
                 linear-gradient(90deg, #A0A0A0 0px, #A0A0A0 6px, transparent 6px, transparent 10px),
                 repeating-linear-gradient(
@@ -237,7 +237,7 @@
             left: 0;
             right: 0;
             height: 40px;
-            background: 
+            background:
                 repeating-linear-gradient(
                     90deg,
                     #8B4513 0px,
@@ -258,7 +258,7 @@
             left: 0;
             right: 0;
             height: 30%;
-            background: 
+            background:
                 repeating-linear-gradient(
                     45deg,
                     #1E90FF 0px,
@@ -284,7 +284,7 @@
             left: 0;
             right: 0;
             height: 50px;
-            background: 
+            background:
                 repeating-linear-gradient(
                     90deg,
                     #C0C0C0 0px,
@@ -303,7 +303,7 @@
             left: 0;
             right: 0;
             height: 30%;
-            background: 
+            background:
                 radial-gradient(circle at 15% 70%, #FF69B4 12px, transparent 13px),
                 radial-gradient(circle at 35% 80%, #FF1493 10px, transparent 11px),
                 radial-gradient(circle at 55% 75%, #FFB6C1 14px, transparent 15px),
@@ -350,7 +350,7 @@
         #character-me {
             position: fixed;
             bottom: 38%;
-            left: 40%;
+            left: 46%; /* Dibuat lebih dekat */
             transform: translateX(-50%);
             z-index: 1000;
             width: 200px;
@@ -363,7 +363,7 @@
         #character-her {
             position: fixed;
             bottom: 38%;
-            left: 60%;
+            left: 54%; /* Dibuat lebih dekat */
             transform: translateX(-50%);
             z-index: 1000;
             width: 200px;
@@ -384,6 +384,23 @@
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
         }
+        
+        /* Hand holding connection */
+        #hand-connection {
+            position: fixed;
+            bottom: 48%; /* Disesuaikan dengan posisi tangan karakter */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px; /* Lebar dari 'gandengan tangan' */
+            height: 10px; /* Tinggi dari 'gandengan tangan' */
+            z-index: 1001; /* Di atas karakter */
+            background-color: #FFDBAC; /* Warna kulit */
+            border: 2px solid #8B4513; /* Outline */
+            border-radius: 5px;
+            transition: transform 0.1s ease-out;
+            opacity: 0; /* Awalnya disembunyikan */
+        }
+
 
         /* Auto-scroll controls */
         .controls {
@@ -464,26 +481,26 @@
             .birthday-title {
                 font-size: 2.5rem;
             }
-            
+
             .scene h1 {
                 font-size: 2.5rem;
             }
-            
+
             .scene p {
                 font-size: 1.1rem;
                 padding: 0 20px;
             }
-            
+
             #character-me {
                 bottom: 35%;
-                left: 35%;
+                left: 42%;
             }
 
             #character-her {
                 bottom: 35%;
-                left: 65%;
+                left: 58%;
             }
-            
+
             .character-sprite {
                 width: 120px;
                 height: 120px;
@@ -497,7 +514,6 @@
     </style>
 </head>
 <body>
-    <!-- Welcome Screen -->
     <div id="welcome-screen">
         <h1 class="birthday-title">🎉 Happy Birthday! 🎂</h1>
         <p class="birthday-subtitle">A special journey through our memories together</p>
@@ -508,30 +524,24 @@
         <button class="start-button" onclick="startJourney()">Begin Our Walk Together 💕</button>
     </div>
 
-    <!-- Progress indicator -->
     <div class="progress-bar" id="progress-bar"></div>
 
-    <!-- Control buttons -->
     <div class="controls" id="controls">
-        <button class="control-button" onclick="toggleAutoWalk()">▶️ Start Walking</button>
+        <button class="control-button" onclick="toggleAutoWalk(event)">▶️ Start Walking</button>
         <button class="control-button" onclick="resetJourney()">🏠 Back to Start</button>
     </div>
 
-    <!-- Hand holding connection -->
     <div id="hand-connection"></div>
 
-    <!-- Two characters that walk together -->
     <div id="character-me">
         <img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" />
     </div>
-    
+
     <div id="character-her">
         <img class="character-sprite" id="character-her-sprite" src="images/her_walk1.png" alt="Her walking" />
     </div>
 
-    <!-- Main scrollable world containing all scenes -->
     <div id="world">
-        <!-- Scene 1: Our Beginning - Park Path -->
         <section class="scene">
             <div class="pixel-cloud"></div>
             <div class="pixel-cloud"></div>
@@ -542,7 +552,6 @@
             </div>
         </section>
 
-        <!-- Scene 2: Growing Together - City Street -->
         <section class="scene">
             <div class="scene-text">
                 <h1>Chapter 2: Adventures & Laughter</h1>
@@ -551,7 +560,6 @@
             </div>
         </section>
 
-        <!-- Scene 3: Through Challenges - Beach Boardwalk -->
         <section class="scene">
             <div class="scene-text">
                 <h1>Chapter 3: Stronger Together</h1>
@@ -560,7 +568,6 @@
             </div>
         </section>
 
-        <!-- Scene 4: Birthday Celebration - Garden Path -->
         <section class="scene">
             <div class="scene-text">
                 <h1>Chapter 4: Today & Forever</h1>
@@ -574,115 +581,116 @@
         // Character walking animation frames
         const meWalkingFrames = [
             'images/me_walk1.png',
-            'images/me_walk2.png', 
+            'images/me_walk2.png',
             'images/me_walk3.png',
             'images/me_walk4.png'
         ];
-        
+
         const herWalkingFrames = [
             'images/her_walk1.png',
-            'images/her_walk2.png', 
+            'images/her_walk2.png',
             'images/her_walk3.png',
             'images/her_walk4.png'
         ];
-        
+
         let frameIndex = 0;
         let isAutoWalking = false;
         let autoWalkInterval;
         let currentPosition = 0;
         const maxScroll = window.innerWidth * 3; // 4 scenes - 1
-        
+
         const characterMeSprite = document.getElementById('character-me-sprite');
         const characterHerSprite = document.getElementById('character-her-sprite');
         const world = document.getElementById('world');
         const progressBar = document.getElementById('progress-bar');
-        
+        const handConnection = document.getElementById('hand-connection');
+
         // Start the journey (hide welcome screen)
         function startJourney() {
             document.getElementById('welcome-screen').classList.add('hidden');
             document.getElementById('controls').style.display = 'block';
             document.getElementById('progress-bar').style.display = 'block';
-            
+
             setTimeout(() => {
                 document.getElementById('welcome-screen').style.display = 'none';
             }, 1000);
         }
-        
+
         // Auto-walking function
         function toggleAutoWalk(event) {
             const button = event ? event.target : document.querySelector('.control-button');
-            
+
             if (!isAutoWalking) {
                 // Start auto-walking
                 isAutoWalking = true;
                 button.textContent = '⏸️ Pause Walking';
                 button.classList.add('active');
-                
+                handConnection.style.opacity = 1; // Tampilkan gandengan tangan
+
                 autoWalkInterval = setInterval(() => {
                     if (currentPosition < maxScroll) {
                         currentPosition += 3; // Walking speed
                         window.scrollTo(currentPosition, 0);
-                        
+
                         // Update walking animation
                         updateWalkingAnimation();
-                        
+
                         // Update progress
                         updateProgress();
                     } else {
                         // Reached the end
                         toggleAutoWalk();
                     }
-                }, 50); // Smooth 20fps animation
-                
+                }, 150); // Kecepatan interval diubah agar animasi lebih terlihat
+
             } else {
                 // Stop auto-walking
                 isAutoWalking = false;
                 button.textContent = '▶️ Start Walking';
                 button.classList.remove('active');
                 clearInterval(autoWalkInterval);
+                handConnection.style.opacity = 0; // Sembunyikan gandengan tangan
             }
         }
-        
+
         // Update walking animation for both characters
         function updateWalkingAnimation() {
             frameIndex = (frameIndex + 1) % 4;
-            
+
             // Update both characters
             characterMeSprite.src = meWalkingFrames[frameIndex];
             characterHerSprite.src = herWalkingFrames[frameIndex];
-            
+
             // Add walking bounce effect with hand connection animation
             const bounce = 'scaleY(1.05) translateY(-3px)';
             characterMeSprite.style.transform = bounce;
             characterHerSprite.style.transform = bounce;
             
             // Animate hand connection
-            const handConnection = document.getElementById('hand-connection');
             if (frameIndex === 1 || frameIndex === 3) {
                 handConnection.style.transform = 'translateX(-50%) translateY(-2px)';
             } else {
                 handConnection.style.transform = 'translateX(-50%) translateY(0px)';
             }
-            
+
             setTimeout(() => {
                 characterMeSprite.style.transform = 'scaleY(1) translateY(0)';
                 characterHerSprite.style.transform = 'scaleY(1) translateY(0)';
-                handConnection.style.transform = 'translateX(-50%) translateY(0px)';
             }, 100);
         }
-        
+
         // Update progress bar
         function updateProgress() {
             const progress = (currentPosition / maxScroll) * 100;
             progressBar.style.width = Math.min(progress, 100) + '%';
         }
-        
+
         // Reset journey
         function resetJourney() {
             if (isAutoWalking) {
                 toggleAutoWalk();
             }
-            
+
             currentPosition = 0;
             window.scrollTo(0, 0);
             frameIndex = 0;
@@ -690,7 +698,7 @@
             characterHerSprite.src = herWalkingFrames[0];
             updateProgress();
         }
-        
+
         // Handle manual scroll (update position tracking)
         window.addEventListener('scroll', function() {
             if (!isAutoWalking) {
@@ -698,90 +706,90 @@
                 updateProgress();
             }
         });
-        
+
         // Enhanced character placeholders with pixel art style
         function createCharacterPlaceholder(canvas, isFemale = false) {
             const ctx = canvas.getContext('2d');
             ctx.imageSmoothingEnabled = false; // Pixel art style
-            ctx.clearRect(0, 0, 160, 160);
+            const w = canvas.width;
+            const h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            // Character colors
+            const skinColor = '#f2d3b1';
+            const skinShadow = '#e3b990';
+            const hairColor = isFemale ? '#6d4c41' : '#3e2723';
+            const hairShine = isFemale ? '#8d6e63' : '#5d4037';
+            const shirtColor = isFemale ? '#ff80ab' : '#4fc3f7';
+            const shirtShadow = isFemale ? '#c5497b' : '#039be5';
+            const pantsColor = isFemale ? '#7e57c2' : '#5c6bc0';
+            const pantsShadow = isFemale ? '#4d2c91' : '#3949ab';
+            const shoeColor = '#8d6e63';
+            const shoeShadow = '#5d4037';
             
-            // Character colors - different for each character
-            const skinColor = '#FFDBAC';
-            const shirtColor = isFemale ? '#E91E63' : '#4A90E2'; // Pink vs Blue
-            const pantsColor = isFemale ? '#8E24AA' : '#2E3A59'; // Purple vs Dark blue
-            const shoeColor = '#8B4513';
-            const hairColor = isFemale ? '#8B4513' : '#2E2E2E'; // Brown vs Black
-            
-            const walkCycle = frameIndex % 4;
-            const scale = 1.2; // Larger for pixel art feel
-            const offsetX = 80;
-            const offsetY = 10;
-            
-            // Draw pixel by pixel for crisp edges
+            const scale = 4;
+            const offsetX = w / 2;
+            const offsetY = 20;
+
             const drawPixelRect = (x, y, w, h, color) => {
                 ctx.fillStyle = color;
                 ctx.fillRect(Math.floor(x), Math.floor(y), Math.floor(w), Math.floor(h));
             };
+
+            // Walking animation state
+            const walkCycle = frameIndex % 4;
+            let legOffset1 = 0, legOffset2 = 0;
+            let armOffset = 0;
+
+            if (walkCycle === 1) { armOffset = 1 * scale; legOffset1 = 2 * scale; legOffset2 = -2 * scale; }
+            if (walkCycle === 3) { armOffset = -1 * scale; legOffset1 = -2 * scale; legOffset2 = 2 * scale; }
+
+            // Head
+            drawPixelRect(offsetX - 5 * scale, offsetY, 10 * scale, 10 * scale, skinColor);
+            drawPixelRect(offsetX - 4 * scale, offsetY - 1 * scale, 8 * scale, 1 * scale, skinColor);
+            drawPixelRect(offsetX - 4 * scale, offsetY + 10 * scale, 8 * scale, 1 * scale, skinColor);
             
-            // Head (pixelated circle approximation)
-            drawPixelRect(offsetX - 12 * scale, offsetY + 20 * scale, 24 * scale, 4 * scale, skinColor);
-            drawPixelRect(offsetX - 16 * scale, offsetY + 24 * scale, 32 * scale, 16 * scale, skinColor);
-            drawPixelRect(offsetX - 12 * scale, offsetY + 40 * scale, 24 * scale, 4 * scale, skinColor);
-            
-            // Hair - different styles
-            if (isFemale) {
-                // Longer hair for female character
-                drawPixelRect(offsetX - 16 * scale, offsetY + 16 * scale, 32 * scale, 8 * scale, hairColor);
-                drawPixelRect(offsetX - 20 * scale, offsetY + 24 * scale, 8 * scale, 20 * scale, hairColor);
-                drawPixelRect(offsetX + 12 * scale, offsetY + 24 * scale, 8 * scale, 20 * scale, hairColor);
-            } else {
-                // Short hair for male character
-                drawPixelRect(offsetX - 16 * scale, offsetY + 16 * scale, 32 * scale, 12 * scale, hairColor);
+            // Hair
+            drawPixelRect(offsetX - 5 * scale, offsetY - 3 * scale, 10 * scale, 4 * scale, hairColor);
+            drawPixelRect(offsetX - 4 * scale, offsetY - 4 * scale, 8 * scale, 1 * scale, hairColor);
+            drawPixelRect(offsetX - 6 * scale, offsetY - 2 * scale, 1 * scale, 5 * scale, hairColor);
+            drawPixelRect(offsetX + 5 * scale, offsetY - 2 * scale, 1 * scale, 5 * scale, hairColor);
+            drawPixelRect(offsetX - 5 * scale, offsetY, 3 * scale, 1 * scale, hairShine); // Shine
+
+            if (isFemale) { // Long hair
+                drawPixelRect(offsetX + 5 * scale, offsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
+                drawPixelRect(offsetX - 7 * scale, offsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
             }
             
-            // Eyes (pixel perfect)
-            drawPixelRect(offsetX - 8 * scale, offsetY + 28 * scale, 4 * scale, 4 * scale, '#000');
-            drawPixelRect(offsetX + 4 * scale, offsetY + 28 * scale, 4 * scale, 4 * scale, '#000');
+            // Eyes
+            drawPixelRect(offsetX - 3 * scale, offsetY + 3 * scale, 2 * scale, 2 * scale, '#fff');
+            drawPixelRect(offsetX + 1 * scale, offsetY + 3 * scale, 2 * scale, 2 * scale, '#fff');
+            drawPixelRect(offsetX - 2 * scale, offsetY + 4 * scale, 1 * scale, 1 * scale, '#000');
+            drawPixelRect(offsetX + 2 * scale, offsetY + 4 * scale, 1 * scale, 1 * scale, '#000');
+
+            // Body
+            drawPixelRect(offsetX - 4 * scale, offsetY + 11 * scale, 8 * scale, 7 * scale, shirtColor);
+            drawPixelRect(offsetX - 4 * scale, offsetY + 17 * scale, 8 * scale, 1 * scale, shirtShadow);
             
-            // Smile (pixelated)
-            drawPixelRect(offsetX - 4 * scale, offsetY + 36 * scale, 8 * scale, 2 * scale, '#000');
+            // Arms
+            // Right arm (character's right, screen left)
+            drawPixelRect(offsetX - 7 * scale, offsetY + 11 * scale - (armOffset > 0 ? armOffset/2 : 0), 3 * scale, 6 * scale + Math.abs(armOffset), skinColor);
+            // Left arm (character's left, screen right) - this is the hand-holding arm, keep it more static
+            drawPixelRect(offsetX + 4 * scale, offsetY + 11 * scale, 3 * scale, 5 * scale, skinColor);
+            drawPixelRect(offsetX + 5 * scale, offsetY + 16 * scale, 1 * scale, 1 * scale, skinShadow);
             
-            // Body (shirt) - pixel perfect rectangle
-            drawPixelRect(offsetX - 16 * scale, offsetY + 48 * scale, 32 * scale, 32 * scale, shirtColor);
-            
-            // Arms with walking motion
-            const armOffset = Math.sin(walkCycle * Math.PI / 2) * 6 * scale;
-            drawPixelRect(offsetX - 28 * scale, offsetY + 56 * scale, 12 * scale, 8 * scale, skinColor); // Left arm
-            drawPixelRect(offsetX + 16 * scale, offsetY + 56 * scale + armOffset, 12 * scale, 8 * scale, skinColor); // Right arm
-            
-            // Pants - pixel rectangle
-            drawPixelRect(offsetX - 12 * scale, offsetY + 80 * scale, 24 * scale, 24 * scale, pantsColor);
-            
-            // Legs with walking animation (pixel perfect)
-            if (walkCycle === 0 || walkCycle === 2) {
-                drawPixelRect(offsetX - 12 * scale, offsetY + 104 * scale, 8 * scale, 20 * scale, skinColor);
-                drawPixelRect(offsetX + 4 * scale, offsetY + 104 * scale, 8 * scale, 20 * scale, skinColor);
-            } else if (walkCycle === 1) {
-                drawPixelRect(offsetX - 12 * scale, offsetY + 104 * scale, 8 * scale, 20 * scale, skinColor);
-                drawPixelRect(offsetX + 8 * scale, offsetY + 104 * scale, 8 * scale, 20 * scale, skinColor);
-            } else {
-                drawPixelRect(offsetX - 16 * scale, offsetY + 104 * scale, 8 * scale, 20 * scale, skinColor);
-                drawPixelRect(offsetX + 4 * scale, offsetY + 104 * scale, 8 * scale, 20 * scale, skinColor);
-            }
-            
-            // Shoes (pixel perfect)
-            if (walkCycle === 0 || walkCycle === 2) {
-                drawPixelRect(offsetX - 16 * scale, offsetY + 124 * scale, 12 * scale, 6 * scale, shoeColor);
-                drawPixelRect(offsetX + 4 * scale, offsetY + 124 * scale, 12 * scale, 6 * scale, shoeColor);
-            } else if (walkCycle === 1) {
-                drawPixelRect(offsetX - 16 * scale, offsetY + 124 * scale, 12 * scale, 6 * scale, shoeColor);
-                drawPixelRect(offsetX + 8 * scale, offsetY + 124 * scale, 12 * scale, 6 * scale, shoeColor);
-            } else {
-                drawPixelRect(offsetX - 20 * scale, offsetY + 124 * scale, 12 * scale, 6 * scale, shoeColor);
-                drawPixelRect(offsetX + 4 * scale, offsetY + 124 * scale, 12 * scale, 6 * scale, shoeColor);
-            }
+            // Pants
+            drawPixelRect(offsetX - 4 * scale, offsetY + 18 * scale, 8 * scale, 4 * scale, pantsColor);
+
+            // Legs
+            // Left leg
+            drawPixelRect(offsetX - 4 * scale, offsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
+            drawPixelRect(offsetX - 4 * scale + legOffset1, offsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
+            // Right leg
+            drawPixelRect(offsetX + 1 * scale, offsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
+            drawPixelRect(offsetX + 1 * scale + legOffset2, offsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
         }
-        
+
         // Handle image loading errors for both characters
         characterMeSprite.addEventListener('error', function() {
             const canvas = document.createElement('canvas');
@@ -790,7 +798,7 @@
             createCharacterPlaceholder(canvas, false); // Male character
             this.src = canvas.toDataURL();
         });
-        
+
         characterHerSprite.addEventListener('error', function() {
             const canvas = document.createElement('canvas');
             canvas.width = 160;
@@ -798,11 +806,10 @@
             createCharacterPlaceholder(canvas, true); // Female character
             this.src = canvas.toDataURL();
         });
-        
+
         // Initialize with first frames
         characterMeSprite.src = meWalkingFrames[0];
         characterHerSprite.src = herWalkingFrames[0];
     </script>
 </body>
 </html>
-                
