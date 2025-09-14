@@ -116,7 +116,7 @@
 
         #world {
             display: flex;
-            width: 600vw; /* 6 scenes × 100vw each */
+            width: 900vw; /* 9 scenes × 100vw each */
             height: 100vh;
             position: relative;
         }
@@ -136,6 +136,7 @@
         }
 
         /* ==== BACKGROUNDS ==== */
+        /* Scene 1 & 2: Ruang Kelas */
         .scene:nth-child(1), .scene:nth-child(2) {
             background: linear-gradient(to bottom, #f0e6d2 0%, #f0e6d2 60%, #8d6e63 60%, #795548 100%);
         }
@@ -144,6 +145,8 @@
             background: #2c5c3c; border: 15px solid #5d4037; border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 1;
         }
+        
+        /* Scene 3: Bioskop */
         .scene:nth-child(3) { background: linear-gradient(to bottom, #141414 70%, #4a148c 100%); }
         .scene:nth-child(3)::before {
             content: ' '; position: absolute; top: 5%; left: 15%; width: 70%; height: 50%;
@@ -154,22 +157,77 @@
             background-image: repeating-linear-gradient(90deg, #d32f2f 0, #d32f2f 8%, transparent 8%, transparent 10%);
             background-size: 100px 100%;
         }
-        .scene:nth-child(4), .scene:nth-child(5) {
+
+        /* Scene 4: Wisuda (BARU) */
+        .scene:nth-child(4) {
+            background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 60%, #2E8B57 60%, #3CB371 100%);
+        }
+        .scene:nth-child(4)::before { /* Tirai panggung */
+            content:''; position: absolute; top:0; left:0; width: 15%; height: 60%; background: #A52A2A;
+        }
+        .scene:nth-child(4)::after { /* Tirai panggung */
+            content:''; position: absolute; top:0; right:0; width: 15%; height: 60%; background: #A52A2A;
+        }
+        
+        /* Scene 5 & 6: Rooftop */
+        .scene:nth-child(5), .scene:nth-child(6) {
             background: linear-gradient(to bottom, #0c0a1a, #2c1a3e 70%, #4a4a4a 70%, #3c3c3c 100%);
         }
-        .scene:nth-child(4)::before, .scene:nth-child(5)::before {
+        .scene:nth-child(5)::before, .scene:nth-child(6)::before {
              content: ' '; position: absolute; top:0; left:0; right:0; bottom:0;
              background-image: radial-gradient(circle, white 1px, transparent 1px);
              background-size: 50px 50px; opacity: 0.5; animation: twinkle 5s infinite linear;
         }
         @keyframes twinkle { from { background-position: 0 0; } to { background-position: -100px 50px; } }
-        .scene:nth-child(6) {
+
+        /* Scene 7: Perpustakaan (BARU) */
+        .scene:nth-child(7) {
+            background: linear-gradient(to bottom, #fdf5e6 60%, #8B4513 60%, #A0522D 100%);
+        }
+        .scene:nth-child(7)::before { /* Rak buku */
+            content: ''; position: absolute; top: 10%; left: 0; right: 0; height: 45%;
+            background: repeating-linear-gradient(
+                #D2B48C 0, #D2B48C 10%, #8B4513 10%, #8B4513 12%
+            ), repeating-linear-gradient(90deg, #A0522D 0, #A0522D 2%, transparent 2%, transparent 10%);
+            background-size: 100% 100px, 100px 100%;
+        }
+
+        /* Scene 8: Latar Chat WhatsApp */
+        .scene:nth-child(8) {
              background-color: #E5DDD5;
              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cg id='a'%3E%3Cpath fill='%23d9d2c5' d='M27.2 113.7c-3-3-3-7.8 0-10.8l83.2-83.2c3-3 7.8-3 10.8 0s3 7.8 0 10.8L38 113.7c-3 3-7.8 3-10.8 0z'/%3E%3Cpath fill='%23e0d8cb' d='M113.7 172.8c-3-3-7.8-3-10.8 0L19.7 89.6c-3-3-3-7.8 0-10.8s7.8-3 10.8 0l83.2 83.2c3 3 3 7.8 0 10.8z'/%3E%3Cpath fill='%23d9d2c5' d='M108.5 108.5c-1.5-1.5-1.5-3.9 0-5.4l49.5-49.5c1.5-1.5 3.9-1.5 5.4 0s1.5 3.9 0 5.4l-49.5 49.5c-1.5 1.5-3.9 1.5-5.4 0z'/%3E%3Cpath fill='%23d4ccc0' d='M158 158c-1.5-1.5-3.9-1.5-5.4 0l-49.5-49.5c-1.5-1.5-1.5-3.9 0-5.4s3.9-1.5 5.4 0l49.5 49.5c1.5 1.5 1.5 3.9 0 5.4z'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23a' x='-100' y='-100'/%3E%3Cuse href='%23a' x='-100' y='0'/%3E%3Cuse href='%23a' x='0' y='-100'/%3E%3Cuse href='%23a' x='0' y='0'/%3E%3C/svg%3E");
              color: #121212;
         }
-        .scene:nth-child(6) .scene-text { background: #DCF8C6; border-radius: 15px 15px 0 15px; }
-        .scene:nth-child(6) h1, .scene:nth-child(6) p { color: #121212; text-shadow: none; }
+        .scene:nth-child(8) .scene-text { background: #DCF8C6; border-radius: 15px 15px 0 15px; }
+        .scene:nth-child(8) h1, .scene:nth-child(8) p { color: #121212; text-shadow: none; }
+
+        /* Scene 9: Love Hearts (BARU) */
+        .scene:nth-child(9) {
+            background-color: #ffc0cb; /* Pink background */
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            background-color: red;
+            width: 30px;
+            height: 30px;
+            transform: rotate(-45deg);
+            animation: float-heart 10s infinite;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            background-color: red;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        .heart::before { top: -15px; left: 0; }
+        .heart::after { top: 0; left: 15px; }
+        @keyframes float-heart {
+            0% { bottom: -10%; opacity: 1; transform: rotate(-45deg) scale(1); }
+            100% { bottom: 110%; opacity: 0; transform: rotate(-45deg) scale(1.5); }
+        }
 
         /* ==== IMAGE PLACEHOLDER STYLES ==== */
         .image-placeholder {
@@ -182,31 +240,30 @@
             box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
             z-index: 101; /* Selalu di atas elemen lain */
         }
-        
-        /* Gaya untuk gambar DI DALAM placeholder */
         .image-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover; /* Membuat gambar mengisi frame tanpa gepeng */
             display: block;
         }
-        
         .image-placeholder::before {
             content: ''; position: absolute; top: -10px; left: 50%;
             transform: translateX(-50%); width: 80px; height: 25px;
             background: rgba(255, 255, 0, 0.4);
             border-left: 1px dashed rgba(0,0,0,0.2); border-right: 1px dashed rgba(0,0,0,0.2);
         }
-
+        
         /* Posisi dan rotasi unik untuk setiap placeholder */
         .ph-ch2 { top: 18%; right: 15%; transform: rotate(7deg); }
         .ph-ch3 { top: 15%; left: 18%; transform: rotate(-6deg); }
-        .ph-ch4 { top: 20%; right: 16%; transform: rotate(5deg); }
-        .ph-ch5 { top: 18%; left: 18%; transform: rotate(-8deg); }
+        .ph-ch4 { top: 20%; right: 16%; transform: rotate(5deg); } /* Wisuda */
+        .ph-ch5 { top: 18%; left: 18%; transform: rotate(-8deg); } /* Rooftop */
+        .ph-ch6 { top: 18%; right: 15%; transform: rotate(7deg); } /* Rooftop 2 */
+        .ph-ch7 { top: 15%; left: 18%; transform: rotate(-6deg); } /* Perpustakaan */
 
         .scene-text {
             position: relative;
-            z-index: 100; /* z-index lebih rendah dari placeholder */
+            z-index: 100;
             background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 15px;
@@ -271,78 +328,94 @@
 
     <div id="world">
         <section class="scene">
-            <div class="scene-text">
-                <h1>Chapter 1: Awal Kelas Kita</h1>
-                <p>Di antara papan tulis dan deretan bangku, di sanalah cerita kita dimulai...</p>
-            </div>
+            <div class="scene-text"><h1>Chapter 1: Awal Kelas Kita</h1><p>Di antara papan tulis dan deretan bangku, di sanalah cerita kita dimulai...</p></div>
         </section>
 
         <section class="scene">
-            <div class="image-placeholder ph-ch2">
-                <img src="class.jpg" alt="Kenangan Chapter 2">
-            </div>
-            <div class="scene-text">
-                <h1>Chapter 2: Ujian & Dukungan</h1>
-                <p>Setiap ujian dan tugas berat terasa lebih ringan karena kita menghadapinya bersama...</p>
-            </div>
+            <div class="image-placeholder ph-ch2"><img src="class.jpg" alt="Kenangan Kelas"></div>
+            <div class="scene-text"><h1>Chapter 2: Ujian & Dukungan</h1><p>Setiap ujian dan tugas berat terasa lebih ringan karena kita menghadapinya bersama...</p></div>
         </section>
 
         <section class="scene">
-            <div class="image-placeholder ph-ch3">
-                <img src="bioskop.jpg" alt="Kenangan Chapter 3">
-            </div>
-            <div class="scene-text">
-                <h1>Chapter 3: Layar & Cerita</h1>
-                <p>Dari ruang kelas, petualangan kita berlanjut ke dunia lain di balik layar bioskop...</p>
-            </div>
+            <div class="image-placeholder ph-ch3"><img src="bioskop.jpg" alt="Kenangan Bioskop"></div>
+            <div class="scene-text"><h1>Chapter 3: Layar & Cerita</h1><p>Dari ruang kelas, petualangan kita berlanjut ke dunia lain di balik layar bioskop...</p></div>
         </section>
 
         <section class="scene">
-            <div class="image-placeholder ph-ch4">
-                <img src="event1.jpg" alt="Kenangan Chapter 4">
-            </div>
-            <div class="scene-text">
-                <h1>Chapter 4: Di Atas Kota</h1>
-                <p>Di atas gedung, di bawah langit malam, kita berbagi mimpi dan rahasia...</p>
-            </div>
+            <div class="image-placeholder ph-ch4"><img src="path/to/your/graduation.jpg" alt="Kenangan Wisuda"></div>
+            <div class="scene-text"><h1>Chapter 4: Momen Kelulusan</h1><p>Momen yang ditunggu tiba. Dengan toga kebanggaan, kita merayakan akhir dari satu babak dan awal dari babak yang baru.</p></div>
         </section>
         
         <section class="scene">
-            <div class="image-placeholder ph-ch5">
-                <img src="path/to/your/photo4.jpg" alt="Kenangan Chapter 5">
-            </div>
-            <div class="scene-text">
-                <h1>Chapter 5: Bintang & Harapan</h1>
-                <p>Setiap bintang yang kita lihat menjadi saksi dari setiap harapan yang kita ucapkan...</p>
-            </div>
+            <div class="image-placeholder ph-ch5"><img src="event1.jpg" alt="Kenangan Rooftop"></div>
+            <div class="scene-text"><h1>Chapter 5: Di Atas Kota</h1><p>Di atas gedung, di bawah langit malam, kita berbagi mimpi dan rahasia...</p></div>
         </section>
 
         <section class="scene">
-            <div class="scene-text">
-                <h1>Chapter 6: Cerita Tanpa Batas</h1>
-                <p>Dan bahkan saat jarak memisahkan, cerita kita tidak pernah berhenti...</p>
+            <div class="image-placeholder ph-ch6"><img src="path/to/your/rooftop2.jpg" alt="Kenangan Bintang"></div>
+            <div class="scene-text"><h1>Chapter 6: Bintang & Harapan</h1><p>Setiap bintang yang kita lihat menjadi saksi dari setiap harapan yang kita ucapkan...</p></div>
+        </section>
+
+        <section class="scene">
+            <div class="image-placeholder ph-ch7"><img src="path/to/your/library.jpg" alt="Kenangan Perpustakaan"></div>
+            <div class="scene-text"><h1>Chapter 7: Dunia Dalam Kata</h1><p>Di antara rak-rak buku, kita menemukan petualangan baru dan berbagi cerita favorit kita.</p></div>
+        </section>
+
+        <section class="scene">
+            <div class="scene-text"><h1>Chapter 8: Cerita Tanpa Batas</h1><p>Dan bahkan saat jarak memisahkan, cerita kita tidak pernah berhenti. Ribuan notifikasi menjadi bukti.</p></div>
+        </section>
+        
+        <section class="scene">
+            <div id="hearts-container"></div> <div class="scene-text">
+                <h1>Now & Forever</h1>
+                <p>Happy Birthday! Semoga semua kebaikan dan kebahagiaan selalu menyertaimu. Here's to our endless story! 🥂❤️</p>
             </div>
         </section>
     </div>
 
     <script>
-        // Script tidak berubah dari versi sebelumnya.
+        // Update #world width in JavaScript
+        const world = document.getElementById('world');
+        // Script lainnya tetap sama
         const meWalkingFrames = [ 'images/me_walk1.png', 'images/me_walk2.png', 'images/me_walk3.png', 'images/me_walk4.png' ];
         const herWalkingFrames = [ 'images/her_walk1.png', 'images/her_walk2.png', 'images/her_walk3.png', 'images/her_walk4.png' ];
         let frameIndex = 0, walkInterval, currentPosition = 0;
-        let maxScroll = document.getElementById('world').scrollWidth - window.innerWidth; 
+        let maxScroll = world.scrollWidth - window.innerWidth; 
         const walkSpeed = 4;
         let keysPressed = {};
         const characterMeSprite = document.getElementById('character-me-sprite');
         const characterHerSprite = document.getElementById('character-her-sprite');
         const progressBar = document.getElementById('progress-bar');
+        
         function startJourney() {
             document.getElementById('welcome-screen').classList.add('hidden');
             document.getElementById('reset-button').style.display = 'block';
             document.getElementById('progress-bar').style.display = 'block';
-            maxScroll = document.getElementById('world').scrollWidth - window.innerWidth;
+            maxScroll = world.scrollWidth - window.innerWidth;
             setTimeout(() => { document.getElementById('welcome-screen').style.display = 'none'; }, 1000);
+            
+            // Mulai animasi hati
+            createHearts();
         }
+
+        // Fungsi untuk membuat hati di Scene 9
+        function createHearts() {
+            const container = document.querySelector('.scene:nth-child(9)');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 5 + 5 + 's'; // Durasi 5-10 detik
+                heart.style.transform = `rotate(-45deg) scale(${Math.random() * 0.5 + 0.5})`;
+                container.appendChild(heart);
+                
+                // Hapus hati setelah animasi selesai
+                setTimeout(() => {
+                    heart.remove();
+                }, 10000);
+            }, 500);
+        }
+
         function startWalkingAnimation() {
             if (walkInterval) return;
             walkInterval = setInterval(() => {
