@@ -136,121 +136,72 @@
         }
 
         /* ==== BACKGROUNDS ==== */
-
-        /* Scene 1 & 2: Ruang Kelas */
         .scene:nth-child(1), .scene:nth-child(2) {
             background: linear-gradient(to bottom, #f0e6d2 0%, #f0e6d2 60%, #8d6e63 60%, #795548 100%);
-            position: relative;
         }
         .scene:nth-child(1)::before, .scene:nth-child(2)::before {
-            content: '';
-            position: absolute;
-            top: 10%;
-            left: 10%;
-            width: 80%;
-            height: 45%;
-            background: #2c5c3c; /* Warna papan tulis */
-            border: 15px solid #5d4037; /* Frame kayu */
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            z-index: 1; /* Papan tulis di belakang teks */
+            content: ''; position: absolute; top: 10%; left: 10%; width: 80%; height: 45%;
+            background: #2c5c3c; border: 15px solid #5d4037; border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 1;
         }
-
-        /* Scene 3: Bioskop */
-        .scene:nth-child(3) {
-            background: linear-gradient(to bottom, #141414 70%, #4a148c 100%);
+        .scene:nth-child(3) { background: linear-gradient(to bottom, #141414 70%, #4a148c 100%); }
+        .scene:nth-child(3)::before {
+            content: ' '; position: absolute; top: 5%; left: 15%; width: 70%; height: 50%;
+            background: #e0e0e0; border-radius: 5px; box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.3);
         }
-        .scene:nth-child(3)::before { /* Layar bioskop */
-            content: ' ';
-            position: absolute;
-            top: 5%;
-            left: 15%;
-            width: 70%;
-            height: 50%;
-            background: #e0e0e0;
-            border-radius: 5px;
-            box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.3);
-        }
-         .scene:nth-child(3)::after { /* Kursi-kursi */
-            content: ' ';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 30%;
+        .scene:nth-child(3)::after {
+            content: ' '; position: absolute; bottom: 0; left: 0; right: 0; height: 30%;
             background-image: repeating-linear-gradient(90deg, #d32f2f 0, #d32f2f 8%, transparent 8%, transparent 10%);
             background-size: 100px 100%;
         }
-
-
-        /* Scene 4 & 5: Rooftop */
         .scene:nth-child(4), .scene:nth-child(5) {
             background: linear-gradient(to bottom, #0c0a1a, #2c1a3e 70%, #4a4a4a 70%, #3c3c3c 100%);
         }
-        .scene:nth-child(4)::before, .scene:nth-child(5)::before { /* Bintang-bintang */
-             content: ' ';
-             position: absolute; top:0; left:0; right:0; bottom:0;
+        .scene:nth-child(4)::before, .scene:nth-child(5)::before {
+             content: ' '; position: absolute; top:0; left:0; right:0; bottom:0;
              background-image: radial-gradient(circle, white 1px, transparent 1px);
-             background-size: 50px 50px;
-             opacity: 0.5;
-             animation: twinkle 5s infinite linear;
+             background-size: 50px 50px; opacity: 0.5; animation: twinkle 5s infinite linear;
         }
-        @keyframes twinkle {
-            from { background-position: 0 0; }
-            to { background-position: -100px 50px; }
-        }
-
-        /* Scene 6: Latar Chat WhatsApp */
+        @keyframes twinkle { from { background-position: 0 0; } to { background-position: -100px 50px; } }
         .scene:nth-child(6) {
              background-color: #E5DDD5;
              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cg id='a'%3E%3Cpath fill='%23d9d2c5' d='M27.2 113.7c-3-3-3-7.8 0-10.8l83.2-83.2c3-3 7.8-3 10.8 0s3 7.8 0 10.8L38 113.7c-3 3-7.8 3-10.8 0z'/%3E%3Cpath fill='%23e0d8cb' d='M113.7 172.8c-3-3-7.8-3-10.8 0L19.7 89.6c-3-3-3-7.8 0-10.8s7.8-3 10.8 0l83.2 83.2c3 3 3 7.8 0 10.8z'/%3E%3Cpath fill='%23d9d2c5' d='M108.5 108.5c-1.5-1.5-1.5-3.9 0-5.4l49.5-49.5c1.5-1.5 3.9-1.5 5.4 0s1.5 3.9 0 5.4l-49.5 49.5c-1.5 1.5-3.9 1.5-5.4 0z'/%3E%3Cpath fill='%23d4ccc0' d='M158 158c-1.5-1.5-3.9-1.5-5.4 0l-49.5-49.5c-1.5-1.5-1.5-3.9 0-5.4s3.9-1.5 5.4 0l49.5 49.5c1.5 1.5 1.5 3.9 0 5.4z'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23a' x='-100' y='-100'/%3E%3Cuse href='%23a' x='-100' y='0'/%3E%3Cuse href='%23a' x='0' y='-100'/%3E%3Cuse href='%23a' x='0' y='0'/%3E%3C/svg%3E");
              color: #121212;
         }
-        .scene:nth-child(6) .scene-text {
-            background: #DCF8C6; border-radius: 15px 15px 0 15px;
-        }
+        .scene:nth-child(6) .scene-text { background: #DCF8C6; border-radius: 15px 15px 0 15px; }
         .scene:nth-child(6) h1, .scene:nth-child(6) p { color: #121212; text-shadow: none; }
 
-        /* ==== AKHIR BACKGROUNDS ==== */
-
-        /* ==== PLACEHOLDER GAMBAR BARU ==== */
+        /* ==== IMAGE PLACEHOLDER STYLES ==== */
         .image-placeholder {
             position: absolute;
-            top: 18%; /* Sedikit turun agar pas di papan tulis */
-            right: 15%; /* Sedikit ke kiri */
             width: 250px;
             height: 200px;
-            background-color: #f5f5f5; /* Warna dasar foto */
+            background-color: #f5f5f5;
             padding: 15px;
-            padding-bottom: 40px; /* Ruang untuk caption di bawah */
             border-radius: 3px;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
-            transform: rotate(7deg); /* Miring ke kanan */
-            z-index: 2; /* Di atas papan tulis */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Courier New', monospace;
-            color: #aaa;
-            text-align: center;
-            font-size: 1.2rem;
+            /* z-index dinaikkan agar selalu di atas teks */
+            z-index: 101; 
+            object-fit: cover; /* Agar gambar tidak gepeng */
+            font-family: 'Courier New', monospace; color: #aaa;
+            display: flex; justify-content: center; align-items: center; text-align: center; font-size: 1.2rem;
         }
-        
-        /* Efek selotip */
         .image-placeholder::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 25px;
-            background: rgba(255, 255, 0, 0.4); /* Warna selotip kekuningan transparan */
-            border-left: 1px dashed rgba(0,0,0,0.2);
-            border-right: 1px dashed rgba(0,0,0,0.2);
+            content: ''; position: absolute; top: -10px; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 25px;
+            background: rgba(255, 255, 0, 0.4);
+            border-left: 1px dashed rgba(0,0,0,0.2); border-right: 1px dashed rgba(0,0,0,0.2);
         }
+
+        /* Posisi dan rotasi unik untuk setiap placeholder */
+        .ph-ch2 { top: 18%; right: 15%; transform: rotate(7deg); }
+        .ph-ch3 { top: 15%; left: 18%; transform: rotate(-6deg); }
+        .ph-ch4 { top: 20%; right: 16%; transform: rotate(5deg); }
+        .ph-ch5 { top: 18%; left: 18%; transform: rotate(-8deg); }
 
         .scene-text {
             position: relative;
-            z-index: 100;
+            z-index: 100; /* z-index lebih rendah dari placeholder */
             background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 15px;
@@ -263,44 +214,16 @@
             opacity: 0;
             animation: fadeInUp 1s ease-out forwards;
         }
-        .scene h1 {
-            font-size: 3.5rem;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            transform: translateY(30px);
-        }
-        .scene p {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            max-width: 600px;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            transform: translateY(20px);
-            animation-delay: 0.3s;
-        }
+        .scene h1 { font-size: 3.5rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); transform: translateY(30px); }
+        .scene p { font-size: 1.4rem; line-height: 1.8; max-width: 600px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transform: translateY(20px); animation-delay: 0.3s; }
 
         #character-me, #character-her {
-            position: fixed;
-            bottom: 38%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; bottom: 38%; transform: translateX(-50%); z-index: 1000;
+            width: 200px; height: 200px; display: flex; align-items: center; justify-content: center;
         }
         #character-me { left: 48%; }
         #character-her { left: 52%; }
-
-        .character-sprite {
-            width: 160px;
-            height: 160px;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
-            transition: transform 0.15s ease-out;
-            image-rendering: pixelated;
-        }
+        .character-sprite { width: 160px; height: 160px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4)); transition: transform 0.15s ease-out; image-rendering: pixelated; }
         
         .reset-button {
             position: fixed; top: 20px; right: 20px; padding: 10px 20px;
@@ -319,8 +242,7 @@
         @media (max-width: 768px) {
             .birthday-title, .scene h1 { font-size: 2.5rem; }
             .scene p { font-size: 1.1rem; padding: 0 20px; }
-            #character-me { left: 46%; }
-            #character-her { left: 54%; }
+            #character-me { left: 46%; } #character-her { left: 54%; }
             .character-sprite { width: 120px; height: 120px; }
             .scene-text { padding: 20px; margin-top: 20px; }
             .image-placeholder { width: 150px; height: 120px; padding: 10px; padding-bottom: 25px; font-size: 1rem;}
@@ -331,9 +253,7 @@
     <div id="welcome-screen">
         <h1 class="birthday-title">🎉 Happy Birthday! 🎂</h1>
         <p class="birthday-subtitle">A special journey through our memories together</p>
-        <div class="character-intro">
-            <p>Today we'll walk through our story together - you and me, side by side.</p>
-        </div>
+        <div class="character-intro"><p>Today we'll walk through our story together - you and me, side by side.</p></div>
         <p class="controls-info">Gunakan tombol panah ⬅️ dan ➡️ untuk berjalan</p>
         <button class="start-button" onclick="startJourney()">Begin Our Walk Together 💕</button>
     </div>
@@ -341,67 +261,60 @@
     <div class="progress-bar" id="progress-bar"></div>
     <button class="reset-button" id="reset-button" onclick="resetJourney()">🏠 Kembali ke Awal</button>
 
-    <div id="character-me">
-        <img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" />
-    </div>
-    <div id="character-her">
-        <img class="character-sprite" id="character-her-sprite" src="images/her_walk1.png" alt="Her walking" />
-    </div>
+    <div id="character-me"><img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" /></div>
+    <div id="character-her"><img class="character-sprite" id="character-her-sprite" src="images/her_walk1.png" alt="Her walking" /></div>
 
     <div id="world">
         <section class="scene">
             <div class="scene-text">
                 <h1>Chapter 1: Awal Kelas Kita</h1>
-                <p>Di antara papan tulis dan deretan bangku, di sanalah cerita kita dimulai. Sebuah sapaan sederhana yang membuka lembaran baru.</p>
-                <p>Kita belajar bersama, tertawa bersama, dan tumbuh tanpa sadar bahwa sesuatu yang istimewa sedang terjalin.</p>
+                <p>Di antara papan tulis dan deretan bangku, di sanalah cerita kita dimulai...</p>
             </div>
         </section>
 
         <section class="scene">
-            <div class="image-placeholder">Letakkan foto<br>kenangan di sini!</div>
+            <div class="image-placeholder ph-ch2">Chapter 2<br>Image</div>
             <div class="scene-text">
                 <h1>Chapter 2: Ujian & Dukungan</h1>
-                <p>Setiap ujian dan tugas berat terasa lebih ringan karena kita menghadapinya bersama. Kamu adalah partner belajar terbaik.</p>
-                <p>Dukunganmu di masa-masa sulit sekolah adalah pondasi pertemanan kita yang paling kokoh.</p>
+                <p>Setiap ujian dan tugas berat terasa lebih ringan karena kita menghadapinya bersama...</p>
             </div>
         </section>
 
         <section class="scene">
+            <img src="bioskop.jpg" alt="Kenangan di kelas" class="image-placeholder">
             <div class="scene-text">
                 <h1>Chapter 3: Layar & Cerita</h1>
-                <p>Dari ruang kelas, petualangan kita berlanjut ke dunia lain di balik layar bioskop. Berbagi popcorn dan cerita film favorit.</p>
-                <p>Di kegelapan bioskop, kita menemukan banyak kesamaan dan cerita yang ingin kita bagi satu sama lain.</p>
+                <p>Dari ruang kelas, petualangan kita berlanjut ke dunia lain di balik layar bioskop...</p>
             </div>
         </section>
 
         <section class="scene">
+            <div class="image-placeholder ph-ch4">Chapter 4<br>Image</div>
             <div class="scene-text">
                 <h1>Chapter 4: Di Atas Kota</h1>
-                <p>Di atas gedung, di bawah langit malam, kita berbagi mimpi dan rahasia. Memandang kelip lampu kota yang tak pernah tidur.</p>
-                <p>Momen-momen di rooftop ini mengajarkan kita bahwa terkadang, yang kita butuhkan hanyalah teman untuk diajak bicara.</p>
+                <p>Di atas gedung, di bawah langit malam, kita berbagi mimpi dan rahasia...</p>
             </div>
         </section>
         
         <section class="scene">
+            <div class="image-placeholder ph-ch5">Chapter 5<br>Image</div>
             <div class="scene-text">
                 <h1>Chapter 5: Bintang & Harapan</h1>
-                <p>Setiap bintang yang kita lihat menjadi saksi dari setiap harapan yang kita ucapkan. Kita berjanji untuk selalu ada.</p>
-                <p>Di sini, di ketinggian ini, persahabatan kita terasa tak terbatas, seluas langit malam itu sendiri.</p>
+                <p>Setiap bintang yang kita lihat menjadi saksi dari setiap harapan yang kita ucapkan...</p>
             </div>
         </section>
 
         <section class="scene">
             <div class="scene-text">
                 <h1>Chapter 6: Cerita Tanpa Batas</h1>
-                <p>Dan bahkan saat jarak memisahkan, cerita kita tidak pernah berhenti. Ribuan notifikasi menjadi bukti.</p>
-                <p>Happy Birthday! Semoga semua kebaikan dan kebahagiaan selalu menyertaimu. Here's to our endless chat history! 🥂</p>
+                <p>Dan bahkan saat jarak memisahkan, cerita kita tidak pernah berhenti...</p>
             </div>
         </section>
     </div>
 
     <script>
-        // Script tidak berubah dari versi sebelumnya, jadi disingkat untuk kejelasan.
-        // Cukup salin seluruh blok kode di atas, script lengkap sudah termasuk.
+        // Script tidak berubah, jadi tidak perlu disalin ulang jika sudah ada.
+        // Kode lengkap di atas sudah termasuk script ini.
         const meWalkingFrames = [ 'images/me_walk1.png', 'images/me_walk2.png', 'images/me_walk3.png', 'images/me_walk4.png' ];
         const herWalkingFrames = [ 'images/her_walk1.png', 'images/her_walk2.png', 'images/her_walk3.png', 'images/her_walk4.png' ];
         let frameIndex = 0, walkInterval, currentPosition = 0;
@@ -425,23 +338,14 @@
                 characterMeSprite.src = meWalkingFrames[frameIndex];
                 characterHerSprite.src = herWalkingFrames[frameIndex];
                 const bounce = 'translateY(-4px)', normal = 'translateY(0)';
-                if (frameIndex === 1 || frameIndex === 3) {
-                    characterMeSprite.style.transform = bounce;
-                    characterHerSprite.style.transform = bounce;
-                } else {
-                    characterMeSprite.style.transform = normal;
-                    characterHerSprite.style.transform = normal;
-                }
+                if (frameIndex === 1 || frameIndex === 3) { characterMeSprite.style.transform = bounce; characterHerSprite.style.transform = bounce; } 
+                else { characterMeSprite.style.transform = normal; characterHerSprite.style.transform = normal; }
             }, 150);
         }
         function stopWalkingAnimation() {
-            clearInterval(walkInterval);
-            walkInterval = null;
-            frameIndex = 0; 
-            characterMeSprite.src = meWalkingFrames[frameIndex];
-            characterHerSprite.src = herWalkingFrames[frameIndex];
-            characterMeSprite.style.transform = 'translateY(0)';
-            characterHerSprite.style.transform = 'translateY(0)';
+            clearInterval(walkInterval); walkInterval = null; frameIndex = 0; 
+            characterMeSprite.src = meWalkingFrames[frameIndex]; characterHerSprite.src = herWalkingFrames[frameIndex];
+            characterMeSprite.style.transform = 'translateY(0)'; characterHerSprite.style.transform = 'translateY(0)';
         }
         function move() {
             if (keysPressed['ArrowRight']) { currentPosition = Math.min(currentPosition + walkSpeed, maxScroll); }
@@ -452,70 +356,37 @@
         }
         document.addEventListener('keydown', (event) => {
             if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-                if (!keysPressed[event.key]) {
-                     keysPressed[event.key] = true;
-                     startWalkingAnimation();
-                     requestAnimationFrame(move);
-                }
+                if (!keysPressed[event.key]) { keysPressed[event.key] = true; startWalkingAnimation(); requestAnimationFrame(move); }
             }
         });
         document.addEventListener('keyup', (event) => {
             if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
                 keysPressed[event.key] = false;
-                if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight']) {
-                    stopWalkingAnimation();
-                }
+                if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight']) { stopWalkingAnimation(); }
             }
         });
         function updateProgress() { progressBar.style.width = Math.min((currentPosition / maxScroll) * 100, 100) + '%'; }
         function resetJourney() {
-            currentPosition = 0;
-            window.scrollTo(0, 0);
-            updateProgress();
-            if(walkInterval) stopWalkingAnimation();
+            currentPosition = 0; window.scrollTo(0, 0); updateProgress(); if(walkInterval) stopWalkingAnimation();
         }
         window.addEventListener('scroll', () => { currentPosition = window.scrollX; updateProgress(); });
         function createCharacterPlaceholder(canvas, isFemale = false) {
-            const ctx = canvas.getContext('2d');
-            ctx.imageSmoothingEnabled = false;
-            const w = canvas.width, h = canvas.height;
-            ctx.clearRect(0, 0, w, h);
-            const skinColor = '#f2d3b1', hairColor = isFemale ? '#6d4c41' : '#3e2723',
-                  shirtColor = isFemale ? '#ff80ab' : '#4fc3f7', pantsColor = isFemale ? '#7e57c2' : '#5c6bc0',
-                  shoeColor = '#8d6e63', scale = 4, offsetX = w / 2, offsetY = 20;
+            const ctx = canvas.getContext('2d'); ctx.imageSmoothingEnabled = false; const w = canvas.width, h = canvas.height; ctx.clearRect(0, 0, w, h);
+            const skinColor = '#f2d3b1', hairColor = isFemale ? '#6d4c41' : '#3e2723', shirtColor = isFemale ? '#ff80ab' : '#4fc3f7', pantsColor = isFemale ? '#7e57c2' : '#5c6bc0', shoeColor = '#8d6e63', scale = 4, offsetX = w / 2, offsetY = 20;
             const drawPixelRect = (x, y, w, h, color) => { ctx.fillStyle = color; ctx.fillRect(Math.floor(x), Math.floor(y), Math.floor(w), Math.floor(h)); };
-            const walkCycle = frameIndex % 4;
-            let legOffset1 = 0, legOffset2 = 0, armSwing = 0;
-            let bodyBounce = (walkCycle === 1 || walkCycle === 3) ? -1 * scale : 0;
+            const walkCycle = frameIndex % 4; let legOffset1 = 0, legOffset2 = 0, armSwing = 0; let bodyBounce = (walkCycle === 1 || walkCycle === 3) ? -1 * scale : 0;
             if (walkCycle === 1) { legOffset1 = 2 * scale; legOffset2 = -2 * scale; armSwing = 1 * scale; }
             if (walkCycle === 3) { legOffset1 = -2 * scale; legOffset2 = 2 * scale; armSwing = -1 * scale; }
             const currentOffsetY = offsetY + bodyBounce;
-            drawPixelRect(offsetX - 5 * scale, currentOffsetY, 10 * scale, 10 * scale, skinColor);
-            drawPixelRect(offsetX - 4 * scale, currentOffsetY - 1 * scale, 8 * scale, 1 * scale, skinColor);
-            drawPixelRect(offsetX - 4 * scale, currentOffsetY + 10 * scale, 8 * scale, 1 * scale, skinColor);
-            drawPixelRect(offsetX - 5 * scale, currentOffsetY - 3 * scale, 10 * scale, 4 * scale, hairColor);
-            drawPixelRect(offsetX - 4 * scale, currentOffsetY - 4 * scale, 8 * scale, 1 * scale, hairColor);
-            if (isFemale) {
-                drawPixelRect(offsetX + 5 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
-                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
-            }
-            drawPixelRect(offsetX - 3 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000');
-            drawPixelRect(offsetX + 1 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000');
-            drawPixelRect(offsetX - 4 * scale, currentOffsetY + 11 * scale, 8 * scale, 7 * scale, shirtColor);
-            drawPixelRect(offsetX - 4 * scale, currentOffsetY + 18 * scale, 8 * scale, 4 * scale, pantsColor);
-            drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
-            drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
-            drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
-            drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
-            if (isFemale) {
-                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor);
-                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor);
-                drawPixelRect(offsetX + 4 * scale, currentOffsetY + 11 * scale + armSwing, 3 * scale, 6 * scale, skinColor);
-            } else {
-                drawPixelRect(offsetX + 3 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor);
-                drawPixelRect(offsetX + 4 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor);
-                drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale - armSwing, 3 * scale, 6 * scale, skinColor);
-            }
+            drawPixelRect(offsetX - 5 * scale, currentOffsetY, 10 * scale, 10 * scale, skinColor); drawPixelRect(offsetX - 4 * scale, currentOffsetY - 1 * scale, 8 * scale, 1 * scale, skinColor); drawPixelRect(offsetX - 4 * scale, currentOffsetY + 10 * scale, 8 * scale, 1 * scale, skinColor);
+            drawPixelRect(offsetX - 5 * scale, currentOffsetY - 3 * scale, 10 * scale, 4 * scale, hairColor); drawPixelRect(offsetX - 4 * scale, currentOffsetY - 4 * scale, 8 * scale, 1 * scale, hairColor);
+            if (isFemale) { drawPixelRect(offsetX + 5 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor); drawPixelRect(offsetX - 7 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor); }
+            drawPixelRect(offsetX - 3 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000'); drawPixelRect(offsetX + 1 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000');
+            drawPixelRect(offsetX - 4 * scale, currentOffsetY + 11 * scale, 8 * scale, 7 * scale, shirtColor); drawPixelRect(offsetX - 4 * scale, currentOffsetY + 18 * scale, 8 * scale, 4 * scale, pantsColor);
+            drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor); drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
+            drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor); drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
+            if (isFemale) { drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor); drawPixelRect(offsetX - 7 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor); drawPixelRect(offsetX + 4 * scale, currentOffsetY + 11 * scale + armSwing, 3 * scale, 6 * scale, skinColor); }
+            else { drawPixelRect(offsetX + 3 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor); drawPixelRect(offsetX + 4 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor); drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale - armSwing, 3 * scale, 6 * scale, skinColor); }
         }
         characterMeSprite.addEventListener('error', function() { const c = document.createElement('canvas'); c.width=160; c.height=160; createCharacterPlaceholder(c, false); this.src=c.toDataURL(); });
         characterHerSprite.addEventListener('error', function() { const c = document.createElement('canvas'); c.width=160; c.height=160; createCharacterPlaceholder(c, true); this.src=c.toDataURL(); });
