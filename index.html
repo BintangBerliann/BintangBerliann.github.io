@@ -68,7 +68,6 @@
             opacity: 0;
         }
         
-        /* Instruksi kontrol baru */
         .controls-info {
             font-size: 1.2rem;
             margin-top: 20px;
@@ -111,30 +110,17 @@
             }
         }
 
-        /* Hide scrollbar for cleaner look while maintaining functionality */
-        body::-webkit-scrollbar {
-            height: 8px;
-        }
+        body::-webkit-scrollbar { height: 8px; }
+        body::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+        body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
 
-        body::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.3);
-            border-radius: 4px;
-        }
-
-        /* Main scrollable world container */
         #world {
             display: flex;
-            width: 400vw; /* 4 scenes × 100vw each */
+            width: 600vw; /* 6 scenes × 100vw each */
             height: 100vh;
             position: relative;
-            transition: transform 0.1s ease-out;
         }
 
-        /* Individual story scenes */
         .scene {
             width: 100vw;
             height: 100vh;
@@ -149,182 +135,86 @@
             overflow: hidden;
         }
 
-        /* Scene 1: Park Path Background */
-        .scene:nth-child(1) {
-            background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 40%, #90EE90 40%, #228B22 100%);
+        /* ==== BACKGROUND BARU ==== */
+
+        /* Scene 1 & 2: Ruang Kelas */
+        .scene:nth-child(1), .scene:nth-child(2) {
+            background: linear-gradient(to bottom, #f0e6d2 0%, #f0e6d2 60%, #8d6e63 60%, #795548 100%);
             position: relative;
         }
-
-        .scene:nth-child(1)::before {
+        .scene:nth-child(1)::before, .scene:nth-child(2)::before {
             content: '';
             position: absolute;
-            bottom: 30%;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    #8B4513 0px,
-                    #8B4513 8px,
-                    #D2691E 8px,
-                    #D2691E 16px
-                );
-            border-top: 4px solid #654321;
-            border-bottom: 4px solid #654321;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 45%;
+            background: #2c5c3c; /* Warna papan tulis */
+            border: 15px solid #5d4037; /* Frame kayu */
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .scene:nth-child(1)::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 30%;
-            background:
-                radial-gradient(circle at 20% 80%, #228B22 20px, transparent 21px),
-                radial-gradient(circle at 60% 85%, #32CD32 15px, transparent 16px),
-                radial-gradient(circle at 80% 75%, #228B22 25px, transparent 26px),
-                #90EE90;
-            background-size: 80px 80px, 60px 60px, 100px 100px, 100%;
-        }
-
-        /* Scene 2: City Street Background */
-        .scene:nth-child(2) {
-            background: linear-gradient(to bottom, #FFB6C1 0%, #FFB6C1 35%, #D3D3D3 35%, #D3D3D3 100%);
-        }
-
-        .scene:nth-child(2)::before {
-            content: '';
-            position: absolute;
-            bottom: 30%;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    #696969 0px,
-                    #696969 20px,
-                    #FFFFFF 20px,
-                    #FFFFFF 25px,
-                    #696969 25px,
-                    #696969 45px
-                );
-            border-top: 2px solid #2F4F4F;
-            border-bottom: 2px solid #2F4F4F;
-        }
-
-        .scene:nth-child(2)::after {
-            content: '';
-            position: absolute;
-            top: 35%;
-            left: 0;
-            right: 0;
-            height: 35%;
-            background:
-                linear-gradient(90deg, #8B8B8B 0px, #8B8B8B 8px, transparent 8px, transparent 12px),
-                linear-gradient(90deg, #A0A0A0 0px, #A0A0A0 6px, transparent 6px, transparent 10px),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent 0px,
-                    transparent 15px,
-                    #2F4F4F 15px,
-                    #2F4F4F 17px
-                ),
-                #D3D3D3;
-            background-size: 40px 100%, 30px 100%, 100% 30px, 100%;
-        }
-
-        /* Scene 3: Beach Boardwalk Background */
+        /* Scene 3: Bioskop */
         .scene:nth-child(3) {
-            background: linear-gradient(to bottom, #FFE4B5 0%, #FFE4B5 30%, #F4A460 30%, #F4A460 70%, #1E90FF 70%, #1E90FF 100%);
+            background: linear-gradient(to bottom, #141414 70%, #4a148c 100%);
         }
-
-        .scene:nth-child(3)::before {
-            content: '';
+        .scene:nth-child(3)::before { /* Layar bioskop */
+            content: ' ';
             position: absolute;
-            bottom: 30%;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    #8B4513 0px,
-                    #8B4513 12px,
-                    #D2B48C 12px,
-                    #D2B48C 14px,
-                    #8B4513 14px,
-                    #8B4513 26px
-                );
-            border-top: 3px solid #654321;
-            border-bottom: 3px solid #654321;
+            top: 5%;
+            left: 15%;
+            width: 70%;
+            height: 50%;
+            background: #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.3);
         }
-
-        .scene:nth-child(3)::after {
-            content: '';
+         .scene:nth-child(3)::after { /* Kursi-kursi */
+            content: ' ';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             height: 30%;
-            background:
-                repeating-linear-gradient(
-                    45deg,
-                    #1E90FF 0px,
-                    #1E90FF 8px,
-                    #87CEEB 8px,
-                    #87CEEB 16px
-                ),
-                radial-gradient(circle at 30% 60%, #F4A460 8px, transparent 9px),
-                radial-gradient(circle at 70% 70%, #F4A460 6px, transparent 7px),
-                radial-gradient(circle at 50% 80%, #F4A460 10px, transparent 11px);
-            background-size: 32px 32px, 40px 40px, 60px 60px, 50px 50px;
+            background-image: repeating-linear-gradient(90deg, #d32f2f 0, #d32f2f 8%, transparent 8%, transparent 10%);
+            background-size: 100px 100%;
         }
 
-        /* Scene 4: Garden Path Background */
-        .scene:nth-child(4) {
-            background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 35%, #FFB6C1 35%, #FFB6C1 100%);
+
+        /* Scene 4 & 5: Rooftop */
+        .scene:nth-child(4), .scene:nth-child(5) {
+            background: linear-gradient(to bottom, #0c0a1a, #2c1a3e 70%, #4a4a4a 70%, #3c3c3c 100%);
+        }
+        .scene:nth-child(4)::before, .scene:nth-child(5)::before { /* Bintang-bintang */
+             content: ' ';
+             position: absolute; top:0; left:0; right:0; bottom:0;
+             background-image: radial-gradient(circle, white 1px, transparent 1px);
+             background-size: 50px 50px;
+             opacity: 0.5;
+             animation: twinkle 5s infinite linear;
+        }
+        @keyframes twinkle {
+            from { background-position: 0 0; }
+            to { background-position: -100px 50px; }
         }
 
-        .scene:nth-child(4)::before {
-            content: '';
-            position: absolute;
-            bottom: 30%;
-            left: 0;
-            right: 0;
-            height: 50px;
-            background:
-                repeating-linear-gradient(
-                    90deg,
-                    #C0C0C0 0px,
-                    #C0C0C0 10px,
-                    #D3D3D3 10px,
-                    #D3D3D3 20px
-                );
-            border-top: 3px solid #A9A9A9;
-            border-bottom: 3px solid #A9A9A9;
+        /* Scene 6: Latar Chat WhatsApp */
+        .scene:nth-child(6) {
+             background-color: #E5DDD5;
+             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cg id='a'%3E%3Cpath fill='%23d9d2c5' d='M27.2 113.7c-3-3-3-7.8 0-10.8l83.2-83.2c3-3 7.8-3 10.8 0s3 7.8 0 10.8L38 113.7c-3 3-7.8 3-10.8 0z'/%3E%3Cpath fill='%23e0d8cb' d='M113.7 172.8c-3-3-7.8-3-10.8 0L19.7 89.6c-3-3-3-7.8 0-10.8s7.8-3 10.8 0l83.2 83.2c3 3 3 7.8 0 10.8z'/%3E%3Cpath fill='%23d9d2c5' d='M108.5 108.5c-1.5-1.5-1.5-3.9 0-5.4l49.5-49.5c1.5-1.5 3.9-1.5 5.4 0s1.5 3.9 0 5.4l-49.5 49.5c-1.5 1.5-3.9 1.5-5.4 0z'/%3E%3Cpath fill='%23d4ccc0' d='M158 158c-1.5-1.5-3.9-1.5-5.4 0l-49.5-49.5c-1.5-1.5-1.5-3.9 0-5.4s3.9-1.5 5.4 0l49.5 49.5c1.5 1.5 1.5 3.9 0 5.4z'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23a' x='-100' y='-100'/%3E%3Cuse href='%23a' x='-100' y='0'/%3E%3Cuse href='%23a' x='0' y='-100'/%3E%3Cuse href='%23a' x='0' y='0'/%3E%3C/svg%3E");
+             color: #121212; /* Warna teks jadi gelap agar terbaca */
+        }
+        /* Style khusus untuk chat bubble di scene 6 */
+        .scene:nth-child(6) .scene-text {
+            background: #DCF8C6; /* Warna bubble chat hijau */
+            border-radius: 15px 15px 0 15px; /* Bentuk bubble */
+        }
+        .scene:nth-child(6) h1, .scene:nth-child(6) p {
+            color: #121212;
+            text-shadow: none;
         }
 
-        .scene:nth-child(4)::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 30%;
-            background:
-                radial-gradient(circle at 15% 70%, #FF69B4 12px, transparent 13px),
-                radial-gradient(circle at 35% 80%, #FF1493 10px, transparent 11px),
-                radial-gradient(circle at 55% 75%, #FFB6C1 14px, transparent 15px),
-                radial-gradient(circle at 75% 85%, #FF69B4 11px, transparent 12px),
-                radial-gradient(circle at 85% 65%, #FF1493 9px, transparent 10px),
-                linear-gradient(to bottom, #90EE90 0%, #228B22 100%);
-            background-size: 100px 100px, 80px 80px, 120px 120px, 90px 90px, 70px 70px, 100%;
-        }
+        /* ==== AKHIR BACKGROUND BARU ==== */
 
-        /* Text content positioning */
         .scene-text {
             position: relative;
             z-index: 100;
@@ -336,7 +226,6 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Scene typography */
         .scene h1 {
             font-size: 3.5rem;
             margin-bottom: 30px;
@@ -357,11 +246,9 @@
             animation: fadeInUp 1s ease-out 0.3s forwards;
         }
 
-        /* Character containers */
-        #character-me {
+        #character-me, #character-her {
             position: fixed;
             bottom: 38%;
-            left: 48%;
             transform: translateX(-50%);
             z-index: 1000;
             width: 200px;
@@ -370,21 +257,9 @@
             align-items: center;
             justify-content: center;
         }
+        #character-me { left: 48%; }
+        #character-her { left: 52%; }
 
-        #character-her {
-            position: fixed;
-            bottom: 38%;
-            left: 52%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Character sprite styling */
         .character-sprite {
             width: 160px;
             height: 160px;
@@ -396,104 +271,27 @@
             image-rendering: crisp-edges;
         }
         
-        /* Tombol Reset (opsional) */
         .reset-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.9);
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            z-index: 1500;
-            display: none; /* Ditampilkan setelah mulai */
+            position: fixed; top: 20px; right: 20px; padding: 10px 20px;
+            background: rgba(255,255,255,0.9); border: none; border-radius: 25px;
+            cursor: pointer; font-size: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease; z-index: 1500; display: none;
         }
-        .reset-button:hover {
-            background: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
+        .reset-button:hover { background: white; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
 
-        /* Progress indicator */
         .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: rgba(255,255,255,0.8);
-            z-index: 1500;
-            transition: width 0.3s ease;
-            display: none;
+            position: fixed; top: 0; left: 0; height: 4px;
+            background: rgba(255,255,255,0.8); z-index: 1500;
+            transition: width 0.3s ease; display: none;
         }
 
-        /* Pixel art decorative elements */
-        .pixel-cloud {
-            position: absolute;
-            background: white;
-            opacity: 0.8;
-        }
-
-        .scene:nth-child(1) .pixel-cloud:nth-child(1) {
-            top: 15%;
-            left: 20%;
-            width: 60px;
-            height: 20px;
-            border-radius: 20px;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .scene:nth-child(1) .pixel-cloud:nth-child(2) {
-            top: 10%;
-            right: 30%;
-            width: 80px;
-            height: 25px;
-            border-radius: 25px;
-            animation: float 5s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .birthday-title {
-                font-size: 2.5rem;
-            }
-
-            .scene h1 {
-                font-size: 2.5rem;
-            }
-
-            .scene p {
-                font-size: 1.1rem;
-                padding: 0 20px;
-            }
-
-            #character-me {
-                bottom: 35%;
-                left: 46%;
-            }
-
-            #character-her {
-                bottom: 35%;
-                left: 54%;
-            }
-
-            .character-sprite {
-                width: 120px;
-                height: 120px;
-            }
-
-            .scene-text {
-                padding: 20px;
-                margin-top: 20px;
-            }
+            .birthday-title, .scene h1 { font-size: 2.5rem; }
+            .scene p { font-size: 1.1rem; padding: 0 20px; }
+            #character-me { left: 46%; }
+            #character-her { left: 54%; }
+            .character-sprite { width: 120px; height: 120px; }
+            .scene-text { padding: 20px; margin-top: 20px; }
         }
     </style>
 </head>
@@ -522,77 +320,84 @@
 
     <div id="world">
         <section class="scene">
-            <div class="pixel-cloud"></div>
-            <div class="pixel-cloud"></div>
             <div class="scene-text">
-                <h1>Chapter 1: When We First Met</h1>
-                <p>Every great story starts with a single moment - the day our paths crossed and two lives became beautifully intertwined.</p>
-                <p>From strangers to friends, we began this incredible journey together, not knowing how much joy lay ahead.</p>
+                <h1>Chapter 1: Awal Kelas Kita</h1>
+                <p>Di antara papan tulis dan deretan bangku, di sanalah cerita kita dimulai. Sebuah sapaan sederhana yang membuka lembaran baru.</p>
+                <p>Kita belajar bersama, tertawa bersama, dan tumbuh tanpa sadar bahwa sesuatu yang istimewa sedang terjalin.</p>
             </div>
         </section>
 
         <section class="scene">
             <div class="scene-text">
-                <h1>Chapter 2: Adventures & Laughter</h1>
-                <p>Through seasons of joy and discovery, we walked side by side. Every shared laugh, every adventure, every quiet moment built the foundation of something special.</p>
-                <p>Two hearts learning to beat in harmony, creating memories that would last a lifetime.</p>
+                <h1>Chapter 2: Ujian & Dukungan</h1>
+                <p>Setiap ujian dan tugas berat terasa lebih ringan karena kita menghadapinya bersama. Kamu adalah partner belajar terbaik.</p>
+                <p>Dukunganmu di masa-masa sulit sekolah adalah pondasi pertemanan kita yang paling kokoh.</p>
             </div>
         </section>
 
         <section class="scene">
             <div class="scene-text">
-                <h1>Chapter 3: Stronger Together</h1>
-                <p>When storms came, we didn't face them alone. Hand in hand, we weathered every challenge, proving that together we could overcome anything.</p>
-                <p>In the difficult moments, we discovered the true strength of our bond and the beauty of unconditional support.</p>
+                <h1>Chapter 3: Layar & Cerita</h1>
+                <p>Dari ruang kelas, petualangan kita berlanjut ke dunia lain di balik layar bioskop. Berbagi popcorn dan cerita film favorit.</p>
+                <p>Di kegelapan bioskop, kita menemukan banyak kesamaan dan cerita yang ingin kita bagi satu sama lain.</p>
             </div>
         </section>
 
         <section class="scene">
             <div class="scene-text">
-                <h1>Chapter 4: Today & Forever</h1>
-                <p>And here we are today, celebrating not just your birthday, but the incredible person you are and the amazing journey we continue to share.</p>
-                <p>Happy Birthday! Here's to many more adventures together, walking through life side by side. 🎂✨</p>
+                <h1>Chapter 4: Di Atas Kota</h1>
+                <p>Di atas gedung, di bawah langit malam, kita berbagi mimpi dan rahasia. Memandang kelip lampu kota yang tak pernah tidur.</p>
+                <p>Momen-momen di rooftop ini mengajarkan kita bahwa terkadang, yang kita butuhkan hanyalah teman untuk diajak bicara.</p>
+            </div>
+        </section>
+        
+        <section class="scene">
+            <div class="scene-text">
+                <h1>Chapter 5: Bintang & Harapan</h1>
+                <p>Setiap bintang yang kita lihat menjadi saksi dari setiap harapan yang kita ucapkan. Kita berjanji untuk selalu ada.</p>
+                <p>Di sini, di ketinggian ini, persahabatan kita terasa tak terbatas, seluas langit malam itu sendiri.</p>
+            </div>
+        </section>
+
+        <section class="scene">
+            <div class="scene-text">
+                <h1>Chapter 6: Cerita Tanpa Batas</h1>
+                <p>Dan bahkan saat jarak memisahkan, cerita kita tidak pernah berhenti. Ribuan notifikasi menjadi bukti.</p>
+                <p>Happy Birthday! Semoga semua kebaikan dan kebahagiaan selalu menyertaimu. Here's to our endless chat history! 🥂</p>
             </div>
         </section>
     </div>
 
     <script>
-        // Character walking animation frames
         const meWalkingFrames = [ 'images/me_walk1.png', 'images/me_walk2.png', 'images/me_walk3.png', 'images/me_walk4.png' ];
         const herWalkingFrames = [ 'images/her_walk1.png', 'images/her_walk2.png', 'images/her_walk3.png', 'images/her_walk4.png' ];
 
-        let frameIndex = 0;
-        let walkInterval;
-        let currentPosition = 0;
-        const maxScroll = document.getElementById('world').scrollWidth - window.innerWidth;
-        const walkSpeed = 4; // <<<< PERUBAHAN DI SINI: Kecepatan berjalan diperlambat dari 10 menjadi 4
-        let keysPressed = {}; // Objek untuk melacak tombol yang ditekan
+        let frameIndex = 0, walkInterval, currentPosition = 0;
+        // Kalkulasi maxScroll dibuat dinamis untuk mengakomodasi jumlah scene baru
+        let maxScroll = document.getElementById('world').scrollWidth - window.innerWidth; 
+        const walkSpeed = 4;
+        let keysPressed = {};
 
         const characterMeSprite = document.getElementById('character-me-sprite');
         const characterHerSprite = document.getElementById('character-her-sprite');
         const progressBar = document.getElementById('progress-bar');
         
-        // Start the journey (hide welcome screen)
         function startJourney() {
             document.getElementById('welcome-screen').classList.add('hidden');
             document.getElementById('reset-button').style.display = 'block';
             document.getElementById('progress-bar').style.display = 'block';
-            
-            setTimeout(() => {
-                document.getElementById('welcome-screen').style.display = 'none';
-            }, 1000);
+            // Update maxScroll setelah halaman dimuat penuh
+            maxScroll = document.getElementById('world').scrollWidth - window.innerWidth;
+            setTimeout(() => { document.getElementById('welcome-screen').style.display = 'none'; }, 1000);
         }
 
-        // Fungsi untuk memulai animasi berjalan
         function startWalkingAnimation() {
-            if (walkInterval) return; // Jika sudah berjalan, jangan mulai lagi
+            if (walkInterval) return;
             walkInterval = setInterval(() => {
                 frameIndex = (frameIndex + 1) % 4;
                 characterMeSprite.src = meWalkingFrames[frameIndex];
                 characterHerSprite.src = herWalkingFrames[frameIndex];
-
-                const bounce = 'translateY(-4px)';
-                const normal = 'translateY(0)';
+                const bounce = 'translateY(-4px)', normal = 'translateY(0)';
                 if (frameIndex === 1 || frameIndex === 3) {
                     characterMeSprite.style.transform = bounce;
                     characterHerSprite.style.transform = bounce;
@@ -603,11 +408,9 @@
             }, 150);
         }
         
-        // Fungsi untuk menghentikan animasi berjalan
         function stopWalkingAnimation() {
             clearInterval(walkInterval);
             walkInterval = null;
-            // Kembali ke frame pertama saat berhenti
             frameIndex = 0; 
             characterMeSprite.src = meWalkingFrames[frameIndex];
             characterHerSprite.src = herWalkingFrames[frameIndex];
@@ -615,53 +418,37 @@
             characterHerSprite.style.transform = 'translateY(0)';
         }
 
-        // Fungsi untuk pergerakan
         function move() {
-            if (keysPressed['d']) {
-                currentPosition = Math.min(currentPosition + walkSpeed, maxScroll);
-                window.scrollTo(currentPosition, 0);
-            }
-            if (keysPressed['a']) {
-                currentPosition = Math.max(currentPosition - walkSpeed, 0);
-                window.scrollTo(currentPosition, 0);
-            }
+            if (keysPressed['ArrowRight']) { currentPosition = Math.min(currentPosition + walkSpeed, maxScroll); }
+            if (keysPressed['ArrowLeft']) { currentPosition = Math.max(currentPosition - walkSpeed, 0); }
+            window.scrollTo(currentPosition, 0);
             updateProgress();
-            
-            // Terus panggil move jika ada tombol yang ditekan
-            if (keysPressed['d'] || keysPressed['a']) {
-                 requestAnimationFrame(move);
-            }
+            if (keysPressed['ArrowRight'] || keysPressed['ArrowLeft']) { requestAnimationFrame(move); }
         }
         
-        // Event listener untuk tombol ditekan
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'a' || event.key === 'd') {
-                if (!keysPressed[event.key]) { // Hanya mulai jika ini tekanan pertama
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                if (!keysPressed[event.key]) {
                      keysPressed[event.key] = true;
                      startWalkingAnimation();
-                     requestAnimationFrame(move); // Mulai loop pergerakan
+                     requestAnimationFrame(move);
                 }
             }
         });
         
-        // Event listener untuk tombol dilepas
         document.addEventListener('keyup', (event) => {
-            if (event.key === 'a' || event.key === 'd') {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
                 keysPressed[event.key] = false;
-                // Hanya berhenti jika tidak ada tombol panah lain yang ditekan
-                if (!keysPressed['a'] && !keysPressed['d']) {
+                if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight']) {
                     stopWalkingAnimation();
                 }
             }
         });
 
-        // Update progress bar
         function updateProgress() {
-            const progress = (currentPosition / maxScroll) * 100;
-            progressBar.style.width = Math.min(progress, 100) + '%';
+            progressBar.style.width = Math.min((currentPosition / maxScroll) * 100, 100) + '%';
         }
 
-        // Reset journey
         function resetJourney() {
             currentPosition = 0;
             window.scrollTo(0, 0);
@@ -669,18 +456,15 @@
             if(walkInterval) stopWalkingAnimation();
         }
 
-        // Handle manual scroll (update position tracking)
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', () => {
             currentPosition = window.scrollX;
             updateProgress();
         });
 
-        // Enhanced character placeholders with pixel art style
         function createCharacterPlaceholder(canvas, isFemale = false) {
             const ctx = canvas.getContext('2d');
             ctx.imageSmoothingEnabled = false;
-            const w = canvas.width;
-            const h = canvas.height;
+            const w = canvas.width, h = canvas.height;
             ctx.clearRect(0, 0, w, h);
 
             const skinColor = '#f2d3b1', hairColor = isFemale ? '#6d4c41' : '#3e2723',
@@ -700,7 +484,6 @@
             if (walkCycle === 3) { legOffset1 = -2 * scale; legOffset2 = 2 * scale; armSwing = -1 * scale; }
             
             const currentOffsetY = offsetY + bodyBounce;
-
             drawPixelRect(offsetX - 5 * scale, currentOffsetY, 10 * scale, 10 * scale, skinColor);
             drawPixelRect(offsetX - 4 * scale, currentOffsetY - 1 * scale, 8 * scale, 1 * scale, skinColor);
             drawPixelRect(offsetX - 4 * scale, currentOffsetY + 10 * scale, 8 * scale, 1 * scale, skinColor);
@@ -730,14 +513,8 @@
             }
         }
 
-        characterMeSprite.addEventListener('error', function() {
-            const canvas = document.createElement('canvas'); canvas.width = 160; canvas.height = 160;
-            createCharacterPlaceholder(canvas, false); this.src = canvas.toDataURL();
-        });
-        characterHerSprite.addEventListener('error', function() {
-            const canvas = document.createElement('canvas'); canvas.width = 160; canvas.height = 160;
-            createCharacterPlaceholder(canvas, true); this.src = canvas.toDataURL();
-        });
+        characterMeSprite.addEventListener('error', function() { const c = document.createElement('canvas'); c.width=160; c.height=160; createCharacterPlaceholder(c, false); this.src=c.toDataURL(); });
+        characterHerSprite.addEventListener('error', function() { const c = document.createElement('canvas'); c.width=160; c.height=160; createCharacterPlaceholder(c, true); this.src=c.toDataURL(); });
 
         characterMeSprite.src = meWalkingFrames[0];
         characterHerSprite.src = herWalkingFrames[0];
