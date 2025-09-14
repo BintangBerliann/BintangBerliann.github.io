@@ -67,6 +67,17 @@
             animation: fadeInUp 1s ease-out 1s forwards;
             opacity: 0;
         }
+        
+        /* Instruksi kontrol baru */
+        .controls-info {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            animation: fadeInUp 1s ease-out 2s forwards;
+            opacity: 0;
+        }
 
         .start-button {
             padding: 20px 40px;
@@ -350,7 +361,7 @@
         #character-me {
             position: fixed;
             bottom: 38%;
-            left: 48%; /* Dibuat lebih dekat lagi */
+            left: 48%;
             transform: translateX(-50%);
             z-index: 1000;
             width: 200px;
@@ -363,7 +374,7 @@
         #character-her {
             position: fixed;
             bottom: 38%;
-            left: 52%; /* Dibuat lebih dekat lagi */
+            left: 52%;
             transform: translateX(-50%);
             z-index: 1000;
             width: 200px;
@@ -384,19 +395,13 @@
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
         }
-
-        /* Auto-scroll controls */
-        .controls {
+        
+        /* Tombol Reset (opsional) */
+        .reset-button {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 1500;
-            display: none;
-        }
-
-        .control-button {
-            padding: 12px 24px;
-            margin: 5px;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
             background: rgba(255,255,255,0.9);
             border: none;
             border-radius: 25px;
@@ -404,17 +409,13 @@
             font-size: 1rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            z-index: 1500;
+            display: none; /* Ditampilkan setelah mulai */
         }
-
-        .control-button:hover {
+        .reset-button:hover {
             background: white;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
-
-        .control-button.active {
-            background: #4CAF50;
-            color: white;
         }
 
         /* Progress indicator */
@@ -502,17 +503,14 @@
         <p class="birthday-subtitle">A special journey through our memories together</p>
         <div class="character-intro">
             <p>Today we'll walk through our story together - you and me, side by side.</p>
-            <p>Two characters, one beautiful journey of friendship and love.</p>
         </div>
+        <p class="controls-info">Gunakan tombol panah ⬅️ dan ➡️ untuk berjalan</p>
         <button class="start-button" onclick="startJourney()">Begin Our Walk Together 💕</button>
     </div>
 
     <div class="progress-bar" id="progress-bar"></div>
 
-    <div class="controls" id="controls">
-        <button class="control-button" onclick="toggleAutoWalk(event)">▶️ Start Walking</button>
-        <button class="control-button" onclick="resetJourney()">🏠 Back to Start</button>
-    </div>
+    <button class="reset-button" id="reset-button" onclick="resetJourney()">🏠 Kembali ke Awal</button>
 
     <div id="character-me">
         <img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" />
@@ -560,90 +558,102 @@
 
     <script>
         // Character walking animation frames
-        const meWalkingFrames = [
-            'images/me_walk1.png',
-            'images/me_walk2.png',
-            'images/me_walk3.png',
-            'images/me_walk4.png'
-        ];
-
-        const herWalkingFrames = [
-            'images/her_walk1.png',
-            'images/her_walk2.png',
-            'images/her_walk3.png',
-            'images/her_walk4.png'
-        ];
+        const meWalkingFrames = [ 'images/me_walk1.png', 'images/me_walk2.png', 'images/me_walk3.png', 'images/me_walk4.png' ];
+        const herWalkingFrames = [ 'images/her_walk1.png', 'images/her_walk2.png', 'images/her_walk3.png', 'images/her_walk4.png' ];
 
         let frameIndex = 0;
-        let isAutoWalking = false;
-        let autoWalkInterval;
+        let walkInterval;
         let currentPosition = 0;
-        const maxScroll = window.innerWidth * 3; // 4 scenes - 1
+        const maxScroll = document.getElementById('world').scrollWidth - window.innerWidth;
+        const walkSpeed = 10; // Kecepatan berjalan
+        let keysPressed = {}; // Objek untuk melacak tombol yang ditekan
 
         const characterMeSprite = document.getElementById('character-me-sprite');
         const characterHerSprite = document.getElementById('character-her-sprite');
-        const world = document.getElementById('world');
         const progressBar = document.getElementById('progress-bar');
-
+        
         // Start the journey (hide welcome screen)
         function startJourney() {
             document.getElementById('welcome-screen').classList.add('hidden');
-            document.getElementById('controls').style.display = 'block';
+            document.getElementById('reset-button').style.display = 'block';
             document.getElementById('progress-bar').style.display = 'block';
-
+            
             setTimeout(() => {
                 document.getElementById('welcome-screen').style.display = 'none';
             }, 1000);
         }
 
-        // Auto-walking function
-        function toggleAutoWalk(event) {
-            const button = event ? event.target : document.querySelector('.control-button');
+        // Fungsi untuk memulai animasi berjalan
+        function startWalkingAnimation() {
+            if (walkInterval) return; // Jika sudah berjalan, jangan mulai lagi
+            walkInterval = setInterval(() => {
+                frameIndex = (frameIndex + 1) % 4;
+                characterMeSprite.src = meWalkingFrames[frameIndex];
+                characterHerSprite.src = herWalkingFrames[frameIndex];
 
-            if (!isAutoWalking) {
-                // Start auto-walking
-                isAutoWalking = true;
-                button.textContent = '⏸️ Pause Walking';
-                button.classList.add('active');
-
-                autoWalkInterval = setInterval(() => {
-                    if (currentPosition < maxScroll) {
-                        currentPosition += 3; // Walking speed
-                        window.scrollTo(currentPosition, 0);
-                        updateWalkingAnimation();
-                        updateProgress();
-                    } else {
-                        toggleAutoWalk();
-                    }
-                }, 150);
-
-            } else {
-                // Stop auto-walking
-                isAutoWalking = false;
-                button.textContent = '▶️ Start Walking';
-                button.classList.remove('active');
-                clearInterval(autoWalkInterval);
-            }
+                const bounce = 'translateY(-4px)';
+                const normal = 'translateY(0)';
+                if (frameIndex === 1 || frameIndex === 3) {
+                    characterMeSprite.style.transform = bounce;
+                    characterHerSprite.style.transform = bounce;
+                } else {
+                    characterMeSprite.style.transform = normal;
+                    characterHerSprite.style.transform = normal;
+                }
+            }, 150);
         }
-
-        // Update walking animation for both characters
-        function updateWalkingAnimation() {
-            frameIndex = (frameIndex + 1) % 4;
+        
+        // Fungsi untuk menghentikan animasi berjalan
+        function stopWalkingAnimation() {
+            clearInterval(walkInterval);
+            walkInterval = null;
+            // Kembali ke frame pertama saat berhenti
+            frameIndex = 0; 
             characterMeSprite.src = meWalkingFrames[frameIndex];
             characterHerSprite.src = herWalkingFrames[frameIndex];
+            characterMeSprite.style.transform = 'translateY(0)';
+            characterHerSprite.style.transform = 'translateY(0)';
+        }
 
-            const bounce = 'translateY(-4px)';
-            const normal = 'translateY(0)';
+        // Fungsi untuk pergerakan
+        function move() {
+            if (keysPressed['ArrowRight']) {
+                currentPosition = Math.min(currentPosition + walkSpeed, maxScroll);
+                window.scrollTo(currentPosition, 0);
+            }
+            if (keysPressed['ArrowLeft']) {
+                currentPosition = Math.max(currentPosition - walkSpeed, 0);
+                window.scrollTo(currentPosition, 0);
+            }
+            updateProgress();
             
-            // Apply bounce effect on alternate frames
-            if (frameIndex === 1 || frameIndex === 3) {
-                characterMeSprite.style.transform = bounce;
-                characterHerSprite.style.transform = bounce;
-            } else {
-                 characterMeSprite.style.transform = normal;
-                 characterHerSprite.style.transform = normal;
+            // Terus panggil move jika ada tombol yang ditekan
+            if (keysPressed['ArrowRight'] || keysPressed['ArrowLeft']) {
+                 requestAnimationFrame(move);
             }
         }
+        
+        // Event listener untuk tombol ditekan
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                if (!keysPressed[event.key]) { // Hanya mulai jika ini tekanan pertama
+                     keysPressed[event.key] = true;
+                     startWalkingAnimation();
+                     requestAnimationFrame(move); // Mulai loop pergerakan
+                }
+            }
+        });
+        
+        // Event listener untuk tombol dilepas
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                keysPressed[event.key] = false;
+                // Hanya berhenti jika tidak ada tombol panah lain yang ditekan
+                if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight']) {
+                    stopWalkingAnimation();
+                }
+            }
+        });
 
         // Update progress bar
         function updateProgress() {
@@ -653,23 +663,16 @@
 
         // Reset journey
         function resetJourney() {
-            if (isAutoWalking) {
-                toggleAutoWalk();
-            }
             currentPosition = 0;
             window.scrollTo(0, 0);
-            frameIndex = 0;
-            characterMeSprite.src = meWalkingFrames[0];
-            characterHerSprite.src = herWalkingFrames[0];
             updateProgress();
+            if(walkInterval) stopWalkingAnimation();
         }
 
         // Handle manual scroll (update position tracking)
         window.addEventListener('scroll', function() {
-            if (!isAutoWalking) {
-                currentPosition = window.scrollX;
-                updateProgress();
-            }
+            currentPosition = window.scrollX;
+            updateProgress();
         });
 
         // Enhanced character placeholders with pixel art style
@@ -680,16 +683,9 @@
             const h = canvas.height;
             ctx.clearRect(0, 0, w, h);
 
-            // Colors
-            const skinColor = '#f2d3b1';
-            const hairColor = isFemale ? '#6d4c41' : '#3e2723';
-            const shirtColor = isFemale ? '#ff80ab' : '#4fc3f7';
-            const pantsColor = isFemale ? '#7e57c2' : '#5c6bc0';
-            const shoeColor = '#8d6e63';
-            
-            const scale = 4;
-            const offsetX = w / 2;
-            const offsetY = 20;
+            const skinColor = '#f2d3b1', hairColor = isFemale ? '#6d4c41' : '#3e2723',
+                  shirtColor = isFemale ? '#ff80ab' : '#4fc3f7', pantsColor = isFemale ? '#7e57c2' : '#5c6bc0',
+                  shoeColor = '#8d6e63', scale = 4, offsetX = w / 2, offsetY = 20;
 
             const drawPixelRect = (x, y, w, h, color) => {
                 ctx.fillStyle = color;
@@ -697,8 +693,7 @@
             };
 
             const walkCycle = frameIndex % 4;
-            let legOffset1 = 0, legOffset2 = 0;
-            let armSwing = 0;
+            let legOffset1 = 0, legOffset2 = 0, armSwing = 0;
             let bodyBounce = (walkCycle === 1 || walkCycle === 3) ? -1 * scale : 0;
 
             if (walkCycle === 1) { legOffset1 = 2 * scale; legOffset2 = -2 * scale; armSwing = 1 * scale; }
@@ -706,69 +701,44 @@
             
             const currentOffsetY = offsetY + bodyBounce;
 
-            // Head
             drawPixelRect(offsetX - 5 * scale, currentOffsetY, 10 * scale, 10 * scale, skinColor);
             drawPixelRect(offsetX - 4 * scale, currentOffsetY - 1 * scale, 8 * scale, 1 * scale, skinColor);
             drawPixelRect(offsetX - 4 * scale, currentOffsetY + 10 * scale, 8 * scale, 1 * scale, skinColor);
-            
-            // Hair
             drawPixelRect(offsetX - 5 * scale, currentOffsetY - 3 * scale, 10 * scale, 4 * scale, hairColor);
             drawPixelRect(offsetX - 4 * scale, currentOffsetY - 4 * scale, 8 * scale, 1 * scale, hairColor);
-            if (isFemale) { // Long hair
+            if (isFemale) {
                 drawPixelRect(offsetX + 5 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
                 drawPixelRect(offsetX - 7 * scale, currentOffsetY + 3 * scale, 2 * scale, 8 * scale, hairColor);
             }
-            
-            // Eyes
             drawPixelRect(offsetX - 3 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000');
             drawPixelRect(offsetX + 1 * scale, currentOffsetY + 3 * scale, 2 * scale, 2 * scale, '#000');
-
-            // Body
             drawPixelRect(offsetX - 4 * scale, currentOffsetY + 11 * scale, 8 * scale, 7 * scale, shirtColor);
-            
-            // Pants
             drawPixelRect(offsetX - 4 * scale, currentOffsetY + 18 * scale, 8 * scale, 4 * scale, pantsColor);
-
-            // Legs
             drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
             drawPixelRect(offsetX - 4 * scale + legOffset1, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
             drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 22 * scale, 3 * scale, 7 * scale, pantsColor);
             drawPixelRect(offsetX + 1 * scale + legOffset2, currentOffsetY + 29 * scale, 3 * scale, 2 * scale, shoeColor);
             
-            // Arms
             if (isFemale) {
-                // Right arm (holding hand)
                 drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor);
                 drawPixelRect(offsetX - 7 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor);
-                // Left arm (swinging)
                 drawPixelRect(offsetX + 4 * scale, currentOffsetY + 11 * scale + armSwing, 3 * scale, 6 * scale, skinColor);
-            } else { // Male
-                // Left arm (holding hand)
+            } else {
                 drawPixelRect(offsetX + 3 * scale, currentOffsetY + 11 * scale, 4 * scale, 3 * scale, shirtColor);
                 drawPixelRect(offsetX + 4 * scale, currentOffsetY + 14 * scale, 3 * scale, 3 * scale, skinColor);
-                // Right arm (swinging)
                 drawPixelRect(offsetX - 7 * scale, currentOffsetY + 11 * scale - armSwing, 3 * scale, 6 * scale, skinColor);
             }
         }
 
-        // Handle image loading errors for both characters
         characterMeSprite.addEventListener('error', function() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 160;
-            canvas.height = 160;
-            createCharacterPlaceholder(canvas, false); // Male character
-            this.src = canvas.toDataURL();
+            const canvas = document.createElement('canvas'); canvas.width = 160; canvas.height = 160;
+            createCharacterPlaceholder(canvas, false); this.src = canvas.toDataURL();
         });
-
         characterHerSprite.addEventListener('error', function() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 160;
-            canvas.height = 160;
-            createCharacterPlaceholder(canvas, true); // Female character
-            this.src = canvas.toDataURL();
+            const canvas = document.createElement('canvas'); canvas.width = 160; canvas.height = 160;
+            createCharacterPlaceholder(canvas, true); this.src = canvas.toDataURL();
         });
 
-        // Initialize with first frames
         characterMeSprite.src = meWalkingFrames[0];
         characterHerSprite.src = herWalkingFrames[0];
     </script>
