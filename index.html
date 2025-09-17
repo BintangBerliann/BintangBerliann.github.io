@@ -6,7 +6,7 @@
     <title>Happy Birthday Pia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
         /* Reset and base styles */
         * {
@@ -16,14 +16,14 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif; /* Font default diubah */
+            font-family: 'Poppins', sans-serif;
             overflow-x: auto;
             overflow-y: hidden;
             height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        /* ==== PERUBAHAN TAMPILAN AWAL DIMULAI DI SINI ==== */
+        /* Welcome screen styles */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -38,8 +38,6 @@
             text-align: center;
             z-index: 2000;
             padding: 20px;
-            
-            /* Animasi Latar Belakang Gradien */
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -60,11 +58,9 @@
 
         .birthday-title {
             font-family: 'Playfair Display', serif;
-            font-size: 5rem; /* Sedikit lebih besar */
+            font-size: 5rem;
             font-weight: 700;
             margin-bottom: 20px;
-            
-            /* Efek Teks Gradien Berkilau */
             background: linear-gradient(45deg, #ffffff, #fffde4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -120,7 +116,7 @@
         .start-button:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-            animation-play-state: paused; /* Hentikan animasi pulse saat disentuh */
+            animation-play-state: paused;
         }
         
         @keyframes pulse {
@@ -140,8 +136,6 @@
                 transform: translateY(0);
             }
         }
-        
-        /* ==== AKHIR DARI PERUBAHAN TAMPILAN AWAL ==== */
         
         body::-webkit-scrollbar { height: 8px; }
         body::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
@@ -168,7 +162,7 @@
             overflow: hidden;
         }
 
-        /* ==== BACKGROUNDS ==== */
+        /* ==== BACKGROUNDS (Nomor Chapter Disesuaikan) ==== */
         .scene:nth-child(1) {
             background: linear-gradient(to bottom, #f0e6d2 0%, #f0e6d2 60%, #8d6e63 60%, #795548 100%);
         }
@@ -253,7 +247,7 @@
             background-color: #fff;
             padding: 12px;
             border-radius: 3px;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Bayangan lebih halus */
             z-index: 101;
         }
         .image-placeholder img {
@@ -275,25 +269,47 @@
         .ph-ch5 { top: 12%; right: 5%; transform: rotate(7deg); }
         .ph-ch6 { top: 10%; left: 5%; transform: rotate(-6deg); }
 
+        /* ==== PERUBAHAN DESAIN CERITA ==== */
         .scene-text {
             position: relative;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px;
+            background: rgba(0, 0, 0, 0.65);
+            padding: 40px; /* Padding lebih besar */
             border-radius: 15px;
             margin: 40px auto 0;
-            width: 80%;
-            max-width: 800px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 85%;
+            max-width: 850px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid; /* Garis atas dekoratif */
+            border-image: linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent) 1;
         }
 
         .scene h1, .scene p {
             opacity: 0;
             animation: fadeInUp 1s ease-out forwards;
         }
-        .scene h1 { font-size: 3.5rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); transform: translateY(30px); }
-        .scene p { font-size: 1.4rem; line-height: 1.8; max-width: 600px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transform: translateY(20px); animation-delay: 0.3s; margin-left: auto; margin-right: auto; }
+        .scene h1 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem; 
+            margin-bottom: 30px; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+            transform: translateY(30px); 
+        }
+        .scene p { 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem; /* Ukuran font paragraf disesuaikan */
+            line-height: 1.8; 
+            max-width: 650px; 
+            margin-bottom: 20px; 
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5); 
+            transform: translateY(20px); 
+            animation-delay: 0.3s; 
+            margin-left: auto; 
+            margin-right: auto;
+            text-align: left; /* Teks dibuat rata kiri agar mudah dibaca */
+        }
 
         #character-me, #character-her {
             position: fixed;
@@ -321,11 +337,11 @@
 
         @media (max-width: 768px) {
             .birthday-title { font-size: 2.8rem; }
-            .scene h1 { font-size: 2.5rem; }
-            .scene p { font-size: 1.1rem; padding: 0 20px; }
+            .scene h1 { font-size: 2.2rem; }
+            .scene p { font-size: 1rem; }
             #character-me { left: 46%; } #character-her { left: 54%; }
             .character-sprite { width: 120px; height: 120px; }
-            .scene-text { padding: 20px; margin-top: 20px; }
+            .scene-text { padding: 25px; margin-top: 20px; width: 90%; }
             .image-placeholder { width: 150px; height: 120px; padding: 10px; font-size: 1rem;}
         }
     </style>
@@ -336,8 +352,8 @@
     </audio>
 
     <div id="welcome-screen">
-        <h1 class="birthday-title">🎂 Happy Birthday My Dear Piaa 🎂</h1>
-        <p class="birthday-subtitle">Here's my grand present for you: A special journey through our memories together.</p>
+        <h1 class="birthday-title">Happy Birthday My Dear Piaa</h1>
+        <p class="birthday-subtitle">Here's my grand present for you: A journey through our memories.</p>
         <div class="character-intro"><p>Today we'll walk through our story together, you and me, side by side.</p></div>
         <p class="controls-info">Use A and D to walk</p>
         <button class="start-button" onclick="startJourney()">Begin Our Walk Together 💕</button>
