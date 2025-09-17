@@ -236,7 +236,6 @@
             border-left: 1px dashed rgba(0,0,0,0.2); border-right: 1px dashed rgba(0,0,0,0.2);
         }
         
-        /* Posisi dan rotasi unik untuk setiap placeholder */
         .ph-ch1 { top: 12%; right: 5%; transform: rotate(7deg); }
         .ph-ch2 { top: 10%; left: 5%; transform: rotate(-6deg); }
         .ph-ch3 { top: 10%; right: 5%; transform: rotate(5deg); }
@@ -300,8 +299,7 @@
 </head>
 <body>
     <audio id="background-music" loop>
-        <source src="heikousen.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung elemen audio.
+        <source src="path/to/your/song.mp3" type="audio/mpeg">
     </audio>
 
     <div id="welcome-screen">
@@ -313,7 +311,7 @@
     </div>
 
     <div class="progress-bar" id="progress-bar"></div>
-    <button class="reset-button" id="reset-button" onclick="resetJourney()">🏠 Return to Start</button>
+    <button class="reset-button" id="reset-button" onclick="resetJourney()">🏠 Kembali ke Awal</button>
 
     <div id="character-me"><img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" /></div>
     <div id="character-her"><img class="character-sprite" id="character-her-sprite" src="images/her_walk1.png" alt="Her walking" /></div>
@@ -401,11 +399,10 @@
             document.getElementById('progress-bar').style.display = 'block';
             maxScroll = world.scrollWidth - window.innerWidth;
             
-            // Memulai musik setelah user berinteraksi
             if (backgroundMusic) {
+                backgroundMusic.volume = 0.5; // Atur volume ke 50%
                 backgroundMusic.play().catch(error => {
-                    console.log("Autoplay ditolak oleh browser, user harus klik di mana saja untuk memulai musik.");
-                    // Fallback jika autoplay gagal total, user bisa klik di mana saja untuk memulai
+                    console.log("Autoplay ditolak oleh browser.");
                     document.body.addEventListener('click', () => backgroundMusic.play(), { once: true });
                 });
             }
@@ -415,7 +412,7 @@
         }
 
         function createHearts() {
-            const container = document.querySelector('.scene:nth-child(8)'); // Disesuaikan nomor chapternya
+            const container = document.querySelector('.scene:nth-child(8)');
             if (!container) return;
             setInterval(() => {
                 const heart = document.createElement('div');
