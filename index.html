@@ -116,7 +116,7 @@
 
         #world {
             display: flex;
-            width: 800vw; /* << DIUBAH: Sekarang ada 8 chapter */
+            width: 800vw; 
             height: 100vh;
             position: relative;
         }
@@ -135,8 +135,7 @@
             overflow: hidden;
         }
 
-        /* ==== BACKGROUNDS (Nomor Chapter Disesuaikan) ==== */
-        /* Scene 1: Ruang Kelas */
+        /* ==== BACKGROUNDS ==== */
         .scene:nth-child(1) {
             background: linear-gradient(to bottom, #f0e6d2 0%, #f0e6d2 60%, #8d6e63 60%, #795548 100%);
         }
@@ -146,7 +145,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 1;
         }
         
-        /* Scene 2: Bioskop */
         .scene:nth-child(2) { background: linear-gradient(to bottom, #141414 70%, #4a148c 100%); }
         .scene:nth-child(2)::before {
             content: ' '; position: absolute; top: 5%; left: 15%; width: 70%; height: 50%;
@@ -158,7 +156,6 @@
             background-size: 100px 100%;
         }
         
-        /* Scene 3 & 5: Rooftop */
         .scene:nth-child(3), .scene:nth-child(5) {
             background: linear-gradient(to bottom, #0c0a1a, #2c1a3e 70%, #4a4a4a 70%, #3c3c3c 100%);
         }
@@ -169,21 +166,18 @@
         }
         @keyframes twinkle { from { background-position: 0 0; } to { background-position: -100px 50px; } }
         
-        /* Scene 5: Tambahan Bulan */
         .scene:nth-child(5)::after {
             content: ''; position: absolute; top: 15%; right: 15%; width: 100px; height: 100px;
             background: #f5f3ce; border-radius: 50%;
             box-shadow: 0 0 50px #f5f3ce, 0 0 100px #f5f3ce;
         }
         
-        /* Scene 4: Wisuda */
         .scene:nth-child(4) {
             background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 60%, #2E8B57 60%, #3CB371 100%);
         }
         .scene:nth-child(4)::before { content:''; position: absolute; top:0; left:0; width: 15%; height: 60%; background: #A52A2A; }
         .scene:nth-child(4)::after { content:''; position: absolute; top:0; right:0; width: 15%; height: 60%; background: #A52A2A; }
         
-        /* Scene 6: Perpustakaan */
         .scene:nth-child(6) {
             background: linear-gradient(to bottom, #fdf5e6 60%, #8B4513 60%, #A0522D 100%);
         }
@@ -193,7 +187,6 @@
             background-size: 100% 100px, 100px 100%;
         }
 
-        /* Scene 7: Latar Chat WhatsApp */
         .scene:nth-child(7) {
              background-color: #E5DDD5;
              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cg id='a'%3E%3Cpath fill='%23d9d2c5' d='M27.2 113.7c-3-3-3-7.8 0-10.8l83.2-83.2c3-3 7.8-3 10.8 0s3 7.8 0 10.8L38 113.7c-3 3-7.8 3-10.8 0z'/%3E%3Cpath fill='%23e0d8cb' d='M113.7 172.8c-3-3-7.8-3-10.8 0L19.7 89.6c-3-3-3-7.8 0-10.8s7.8-3 10.8 0l83.2 83.2c3 3 3 7.8 0 10.8z'/%3E%3Cpath fill='%23d9d2c5' d='M108.5 108.5c-1.5-1.5-1.5-3.9 0-5.4l49.5-49.5c1.5-1.5 3.9-1.5 5.4 0s1.5 3.9 0 5.4l-49.5 49.5c-1.5 1.5-3.9 1.5-5.4 0z'/%3E%3Cpath fill='%23d4ccc0' d='M158 158c-1.5-1.5-3.9-1.5-5.4 0l-49.5-49.5c-1.5-1.5-1.5-3.9 0-5.4s3.9-1.5 5.4 0l49.5 49.5c1.5 1.5 1.5 3.9 0 5.4z'/%3E%3C/g%3E%3C/defs%3E%3Cuse href='%23a' x='-100' y='-100'/%3E%3Cuse href='%23a' x='-100' y='0'/%3E%3Cuse href='%23a' x='0' y='-100'/%3E%3Cuse href='%23a' x='0' y='0'/%3E%3C/svg%3E");
@@ -202,7 +195,6 @@
         .scene:nth-child(7) .scene-text { background: #DCF8C6; border-radius: 15px 15px 0 15px; }
         .scene:nth-child(7) h1, .scene:nth-child(7) p { color: #121212; text-shadow: none; }
 
-        /* Scene 8: Love Hearts */
         .scene:nth-child(8) {
             background-color: #ffc0cb; overflow: hidden;
         }
@@ -234,7 +226,7 @@
         }
         .image-placeholder img {
             width: 100%; height: 100%; object-fit: cover;
-            object-position: center; /* << DIKEMBALIKAN KE SEMULA */
+            object-position: center;
             display: block;
         }
         .image-placeholder::before {
@@ -244,7 +236,7 @@
             border-left: 1px dashed rgba(0,0,0,0.2); border-right: 1px dashed rgba(0,0,0,0.2);
         }
         
-        /* Posisi dan rotasi unik untuk setiap placeholder (DIPERBARUI) */
+        /* Posisi dan rotasi unik untuk setiap placeholder */
         .ph-ch1 { top: 12%; right: 5%; transform: rotate(7deg); }
         .ph-ch2 { top: 10%; left: 5%; transform: rotate(-6deg); }
         .ph-ch3 { top: 10%; right: 5%; transform: rotate(5deg); }
@@ -307,6 +299,11 @@
     </style>
 </head>
 <body>
+    <audio id="background-music" loop>
+        <source src="heikousen.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
     <div id="welcome-screen">
         <h1 class="birthday-title">🎂 Happy Birthday My Dear Piaa 🎂</h1>
         <p class="birthday-subtitle">Here's my grand present for you: A special journey through our memories together.</p>
@@ -316,7 +313,7 @@
     </div>
 
     <div class="progress-bar" id="progress-bar"></div>
-    <button class="reset-button" id="reset-button" onclick="resetJourney()">🏠 Kembali ke Awal</button>
+    <button class="reset-button" id="reset-button" onclick="resetJourney()">🏠 Return to Start</button>
 
     <div id="character-me"><img class="character-sprite" id="character-me-sprite" src="images/me_walk1.png" alt="Me walking" /></div>
     <div id="character-her"><img class="character-sprite" id="character-her-sprite" src="images/her_walk1.png" alt="Her walking" /></div>
@@ -326,7 +323,7 @@
             <div class="image-placeholder ph-ch1"><img src="class.jpg" alt="Kenangan Kelas"></div>
             <div class="scene-text">
                 <h1>Chapter 1: Our Beginning</h1>
-                <p>Amidst the classroom buzz, our story began. Although we barely spoke, my admiration for you started in silence. Our conversations truly began to flow during the extra classes for university exams, turning quiet observations into shared thoughts and laughter.</p>
+                <p>Amidst the classroom buzz, our story began. Although we barely spoke, my admiration for you started in silence. Our conversations truly began to flow during the extra classes for university entrance exams, turning quiet observations into shared thoughts and laughter.</p>
             </div>
         </section>
 
@@ -355,7 +352,6 @@
         </section>
 
         <section class="scene">
-            <div class="image-placeholder ph-ch5"><img src="path/to/your/rooftop2.jpg" alt="Kenangan Bintang"></div>
             <div class="scene-text">
                 <h1>Chapter 5: A Confession Under the Moon</h1>
                 <p>When you told me you were accepted to UNEJ, I thought it might be the last time I'd see you. As you were about to board the bus, I nervously confessed my feelings—not to ask you to be mine, but simply to let you know how much you meant to me.</p>
@@ -397,18 +393,29 @@
         const characterMeSprite = document.getElementById('character-me-sprite');
         const characterHerSprite = document.getElementById('character-her-sprite');
         const progressBar = document.getElementById('progress-bar');
+        const backgroundMusic = document.getElementById('background-music');
         
         function startJourney() {
             document.getElementById('welcome-screen').classList.add('hidden');
             document.getElementById('reset-button').style.display = 'block';
             document.getElementById('progress-bar').style.display = 'block';
             maxScroll = world.scrollWidth - window.innerWidth;
+            
+            // Memulai musik setelah user berinteraksi
+            if (backgroundMusic) {
+                backgroundMusic.play().catch(error => {
+                    console.log("Autoplay ditolak oleh browser, user harus klik di mana saja untuk memulai musik.");
+                    // Fallback jika autoplay gagal total, user bisa klik di mana saja untuk memulai
+                    document.body.addEventListener('click', () => backgroundMusic.play(), { once: true });
+                });
+            }
+
             setTimeout(() => { document.getElementById('welcome-screen').style.display = 'none'; }, 1000);
             createHearts();
         }
 
         function createHearts() {
-            const container = document.querySelector('.scene:nth-child(8)'); /* Disesuaikan dengan nomor scene baru */
+            const container = document.querySelector('.scene:nth-child(8)'); // Disesuaikan nomor chapternya
             if (!container) return;
             setInterval(() => {
                 const heart = document.createElement('div');
