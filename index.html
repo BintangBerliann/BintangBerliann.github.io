@@ -126,8 +126,8 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+            justify-content: flex-start; /* Mengatur item dari atas */
+            align-items: center; /* Menengahkan secara horizontal */
             text-align: center;
             padding: 40px;
             position: relative;
@@ -250,20 +250,23 @@
         }
         
         /* Posisi dan rotasi unik untuk setiap placeholder (DIPERBARUI) */
-        .ph-ch2 { top: 12%; right: 12%; transform: rotate(7deg); }
-        .ph-ch3 { top: 10%; left: 12%; transform: rotate(-6deg); }
-        .ph-ch4 { top: 10%; right: 12%; transform: rotate(5deg); }
-        .ph-ch5 { top: 12%; left: 15%; transform: rotate(-8deg); }
-        .ph-ch6 { top: 12%; right: 12%; transform: rotate(7deg); }
-        .ph-ch7 { top: 10%; left: 12%; transform: rotate(-6deg); }
+        .ph-ch2 { top: 12%; right: 5%; transform: rotate(7deg); }
+        .ph-ch3 { top: 10%; left: 5%; transform: rotate(-6deg); }
+        .ph-ch4 { top: 12%; right: 5%; transform: rotate(5deg); }
+        .ph-ch5 { top: 12%; left: 5%; transform: rotate(-8deg); }
+        .ph-ch6 { top: 12%; right: 5%; transform: rotate(7deg); }
+        .ph-ch7 { top: 10%; left: 5%; transform: rotate(-6deg); }
 
+        /* Teks dibuat simetris di tengah */
         .scene-text {
             position: relative;
             z-index: 100;
             background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 15px;
-            margin-top: 40px;
+            margin: 40px auto 0; /* << PERUBAHAN DI SINI: Atur margin untuk menengahkan */
+            width: 80%; /* Batasi lebar agar tidak terlalu penuh */
+            max-width: 800px; /* Batas lebar maksimum */
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
@@ -273,7 +276,7 @@
             animation: fadeInUp 1s ease-out forwards;
         }
         .scene h1 { font-size: 3.5rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); transform: translateY(30px); }
-        .scene p { font-size: 1.4rem; line-height: 1.8; max-width: 600px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transform: translateY(20px); animation-delay: 0.3s; }
+        .scene p { font-size: 1.4rem; line-height: 1.8; max-width: 600px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transform: translateY(20px); animation-delay: 0.3s; margin-left: auto; margin-right: auto; }
 
         #character-me, #character-her {
             position: fixed;
