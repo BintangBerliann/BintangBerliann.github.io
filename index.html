@@ -223,19 +223,19 @@
             box-shadow: 0 0 50px #f5f3ce, 0 0 100px #f5f3ce, inset 5px -5px 10px rgba(0,0,0,0.1); /* Efek kawah */
         }
         
-        /* Scene 4: Wisuda (Diperbarui) */
+/* Scene 4: Wisuda (Diperbarui) */
         .scene:nth-child(4) {
             background: #B0E0E6; /* Backdrop langit biru */
         }
-        .scene:nth-child(4)::before { 
-            content:''; position: absolute; top:0; left: 0; width: 20%; height: 100%; 
+        .scene:nth-child(4)::before, .scene:nth-child(4)::after { 
+            content:''; position: absolute; top:0; width: 20%; height: 100%; 
             background: linear-gradient(to bottom, #8B0000, #A52A2A);
-            box-shadow: inset -5px 0 15px rgba(0,0,0,0.4);
+            box-shadow: inset -7px 0 15px rgba(0,0,0,0.4);
         }
+        .scene:nth-child(4)::before { left:0; }
         .scene:nth-child(4)::after { 
-            content:''; position: absolute; top:0; right: 0; width: 20%; height: 100%; 
-            background: linear-gradient(to bottom, #8B0000, #A52A2A);
-            box-shadow: inset 5px 0 15px rgba(0,0,0,0.4);
+            right:0; 
+            transform: scaleX(-1); /* << Memperbaiki cerminan tirai kanan */
         }
         /* Lantai panggung baru untuk wisuda */
         .stage-floor {
@@ -280,10 +280,17 @@
                 linear-gradient(to bottom, transparent 95%, #3E2723 95%),
                 repeating-linear-gradient(90deg, #a52a2a 0 5%, #006400 5% 12%, #00008b 12% 18%, #ffd700 18% 22%, #4b0082 22% 28%, #5D4037 28% 30%);
             background-size: 100% 18%, 150px 100%;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
-        .scene:nth-child(6)::before { left: 0; transform: perspective(100px) rotateY(10deg); }
-        .scene:nth-child(6)::after { right: 0; transform: perspective(100px) rotateY(-10deg); }
+        .scene:nth-child(6)::before { 
+            left: 0; 
+            transform: perspective(100px) rotateY(10deg); 
+            box-shadow: inset 8px 0 15px rgba(0,0,0,0.5);
+        }
+        .scene:nth-child(6)::after { 
+            right: 0; 
+            transform: perspective(100px) rotateY(-10deg); 
+            box-shadow: inset -8px 0 15px rgba(0,0,0,0.5); /* << Memperbaiki bayangan rak kanan */
+        }
 
         /* Scene 7: Latar Chat WhatsApp */
         .scene:nth-child(7) {
