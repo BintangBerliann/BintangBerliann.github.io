@@ -225,52 +225,65 @@
         
         /* Scene 4: Wisuda (Diperbarui) */
         .scene:nth-child(4) {
-            background: linear-gradient(to top, #B0E0E6 60%, transparent 60%); /* Backdrop */
-            background-color: #8B4513; /* Lantai panggung */
+            background: #B0E0E6; /* Backdrop langit biru */
         }
-        .scene:nth-child(4)::before, .scene:nth-child(4)::after { 
-            content:''; position: absolute; top:0; width: 20%; height: 70%; 
+        .scene:nth-child(4)::before { 
+            content:''; position: absolute; top:0; left: 0; width: 20%; height: 100%; 
             background: linear-gradient(to bottom, #8B0000, #A52A2A);
             box-shadow: inset -5px 0 15px rgba(0,0,0,0.4);
         }
-        .scene:nth-child(4)::before { left:0; }
-        .scene:nth-child(4)::after { right:0; transform: scaleX(-1); } /* Tirai kanan dicerminkan */
+        .scene:nth-child(4)::after { 
+            content:''; position: absolute; top:0; right: 0; width: 20%; height: 100%; 
+            background: linear-gradient(to bottom, #8B0000, #A52A2A);
+            box-shadow: inset 5px 0 15px rgba(0,0,0,0.4);
+        }
+        /* Lantai panggung baru untuk wisuda */
+        .stage-floor {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: #8B4513;
+            background-image: 
+                linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent 100%);
+            background-size: 60px 60px;
+            border-top: 10px solid #654321;
+        }
+
         
         /* Scene 6: Perpustakaan (Diperbarui) */
         .scene:nth-child(6) {
             background-color: #3d2c21; /* Dinding belakang */
+        }
+        /* Lantai perpustakaan baru */
+        .library-floor {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 35%;
+            background: #8B4513;
             background-image: 
-                /* Lantai kayu */
-                linear-gradient(90deg, #8B4513 50%, #A0522D 50%);
-            background-size: 100px 100px;
+                repeating-linear-gradient(to right, transparent, transparent 98px, #654321 98px, #654321 100px),
+                repeating-linear-gradient(to bottom, #8B4513, #A0522D);
+            background-size: 100px 100%, 100% 100%;
         }
         .scene:nth-child(6)::before, .scene:nth-child(6)::after { /* Rak buku kiri & kanan */
             content: '';
             position: absolute;
             top: 0;
-            bottom: 35%; /* Tinggi rak */
+            bottom: 35%; 
             width: 35%;
-            background-color: #5D4037; /* Warna dasar rak */
+            background-color: #5D4037;
             background-image: 
-                linear-gradient(to bottom, transparent 95%, #3E2723 95%); /* Garis rak yang simpel */
-            background-size: 100% 18%; /* Tinggi setiap "rak" */
+                linear-gradient(to bottom, transparent 95%, #3E2723 95%),
+                repeating-linear-gradient(90deg, #a52a2a 0 5%, #006400 5% 12%, #00008b 12% 18%, #ffd700 18% 22%, #4b0082 22% 28%, #5D4037 28% 30%);
+            background-size: 100% 18%, 150px 100%;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-            /* Tambahkan detail buku sederhana */
-            mask-image: linear-gradient(to right, 
-                #000 0%, #000 10%, transparent 10%, transparent 15%,
-                #000 15%, #000 25%, transparent 25%, transparent 30%,
-                #000 30%, #000 40%, transparent 40%, transparent 45%,
-                #000 45%, #000 55%, transparent 55%, transparent 60%,
-                #000 60%, #000 70%, transparent 70%, transparent 75%,
-                #000 75%, #000 85%, transparent 85%, transparent 90%,
-                #000 90%, #000 100%
-            );
-            mask-size: 100% 18%; /* Ulangi mask untuk setiap rak */
-            mask-repeat: repeat-y;
         }
         .scene:nth-child(6)::before { left: 0; transform: perspective(100px) rotateY(10deg); }
         .scene:nth-child(6)::after { right: 0; transform: perspective(100px) rotateY(-10deg); }
-
 
         /* Scene 7: Latar Chat WhatsApp */
         .scene:nth-child(7) {
@@ -451,6 +464,7 @@
         </section>
         
         <section class="scene">
+             <div class="stage-floor"></div>
             <div class="image-placeholder ph-ch4"><img src="graduation.jpg" alt="Kenangan Wisuda"></div>
             <div class="scene-text">
                 <h1>Chapter 4: Graduation Day</h1>
@@ -466,6 +480,7 @@
         </section>
 
         <section class="scene">
+            <div class="library-floor"></div>
             <div class="image-placeholder ph-ch6"><img src="gramed.jpg" alt="Kenangan Perpustakaan"></div>
             <div class="scene-text">
                 <h1>Chapter 6: Between The Bookshelves</h1>
