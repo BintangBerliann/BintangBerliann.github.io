@@ -400,7 +400,7 @@
             maxScroll = world.scrollWidth - window.innerWidth;
             
             if (backgroundMusic) {
-                backgroundMusic.volume = 0.2;
+                backgroundMusic.volume = 0.3;
                 backgroundMusic.play().catch(error => {
                     console.log("Autoplay ditolak oleh browser.");
                     document.body.addEventListener('click', () => backgroundMusic.play(), { once: true });
