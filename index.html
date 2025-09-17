@@ -179,18 +179,23 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 1;
         }
         
-        /* Scene 2: Bioskop */
+        /* Scene 2: Bioskop (Diperbarui) */
         .scene:nth-child(2) { 
-            background: #121212;
+            background: #0a0a0a; /* Warna lebih gelap */
             background-image: 
-                linear-gradient(to top, #4a148c 30%, transparent 30%), /* Karpet ungu */
-                repeating-linear-gradient(90deg, #d32f2f 0, #d32f2f 8%, transparent 8%, transparent 10%); /* Kursi */
-            background-size: 100% 100%, 100px 30%;
+                linear-gradient(to top, #4a148c 30%, transparent 30%); /* Karpet ungu */
+            background-size: 100% 100%;
             background-position: bottom;
         }
         .scene:nth-child(2)::before { /* Layar */
             content: ' '; position: absolute; top: 5%; left: 15%; width: 70%; height: 50%;
             background: #e0e0e0; border-radius: 5px; box-shadow: 0 0 40px 15px rgba(255, 255, 255, 0.3);
+        }
+        /* Tambahan: Lampu lantai bioskop */
+        .scene:nth-child(2)::after {
+            content: ''; position: absolute; bottom: 30%; left: 0; right: 0; height: 3px;
+            background: linear-gradient(to right, transparent 5%, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 90%, transparent 95%);
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
         
         /* Scene 3 & 5: Rooftop */
@@ -218,10 +223,10 @@
             box-shadow: 0 0 50px #f5f3ce, 0 0 100px #f5f3ce, inset 5px -5px 10px rgba(0,0,0,0.1); /* Efek kawah */
         }
         
-        /* Scene 4: Wisuda */
+        /* Scene 4: Wisuda (Diperbarui) */
         .scene:nth-child(4) {
-            background: #2E8B57; /* Lantai panggung */
-            background-image: linear-gradient(to top, #B0E0E6 60%, transparent 60%); /* Backdrop */
+            background: linear-gradient(to top, #B0E0E6 60%, transparent 60%); /* Backdrop */
+            background-color: #8B4513; /* Lantai panggung */
         }
         .scene:nth-child(4)::before, .scene:nth-child(4)::after { 
             content:''; position: absolute; top:0; width: 20%; height: 70%; 
@@ -231,15 +236,13 @@
         .scene:nth-child(4)::before { left:0; }
         .scene:nth-child(4)::after { right:0; transform: scaleX(-1); } /* Tirai kanan dicerminkan */
         
-        /* Scene 6: Perpustakaan (DIrombak Total) */
+        /* Scene 6: Perpustakaan (Diperbarui) */
         .scene:nth-child(6) {
             background-color: #3d2c21; /* Dinding belakang */
             background-image: 
                 /* Lantai kayu */
-                linear-gradient(90deg, #8B4513 50%, #A0522D 50%),
-                /* Karpet tengah */
-                linear-gradient(to bottom, transparent, transparent 65%, #6a0dad 65%, #4a148c 100%);
-            background-size: 100px 100px, 100% 100%;
+                linear-gradient(90deg, #8B4513 50%, #A0522D 50%);
+            background-size: 100px 100px;
         }
         .scene:nth-child(6)::before, .scene:nth-child(6)::after { /* Rak buku kiri & kanan */
             content: '';
@@ -247,14 +250,23 @@
             top: 0;
             bottom: 35%; /* Tinggi rak */
             width: 35%;
-            background-color: #5D4037;
+            background-color: #5D4037; /* Warna dasar rak */
             background-image: 
-                /* Buku-buku berwarna */
-                repeating-linear-gradient(90deg, #a52a2a 0 5%, #006400 5% 12%, #00008b 12% 18%, #ffd700 18% 22%, #4b0082 22% 28%, transparent 28% 30%),
-                /* Garis antar rak */
-                linear-gradient(to bottom, #3E2723 2px, transparent 2px);
-            background-size: 150px 100%, 100% 18%; /* Lebar grup buku, tinggi rak */
+                linear-gradient(to bottom, transparent 95%, #3E2723 95%); /* Garis rak yang simpel */
+            background-size: 100% 18%; /* Tinggi setiap "rak" */
             box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            /* Tambahkan detail buku sederhana */
+            mask-image: linear-gradient(to right, 
+                #000 0%, #000 10%, transparent 10%, transparent 15%,
+                #000 15%, #000 25%, transparent 25%, transparent 30%,
+                #000 30%, #000 40%, transparent 40%, transparent 45%,
+                #000 45%, #000 55%, transparent 55%, transparent 60%,
+                #000 60%, #000 70%, transparent 70%, transparent 75%,
+                #000 75%, #000 85%, transparent 85%, transparent 90%,
+                #000 90%, #000 100%
+            );
+            mask-size: 100% 18%; /* Ulangi mask untuk setiap rak */
+            mask-repeat: repeat-y;
         }
         .scene:nth-child(6)::before { left: 0; transform: perspective(100px) rotateY(10deg); }
         .scene:nth-child(6)::after { right: 0; transform: perspective(100px) rotateY(-10deg); }
