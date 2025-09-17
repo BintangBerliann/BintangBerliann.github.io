@@ -299,7 +299,7 @@
 </head>
 <body>
     <audio id="background-music" loop>
-        <source src="path/to/your/song.mp3" type="audio/mpeg">
+        <source src="heikousen.mp3" type="audio/mpeg">
     </audio>
 
     <div id="welcome-screen">
@@ -400,11 +400,15 @@
             maxScroll = world.scrollWidth - window.innerWidth;
             
             if (backgroundMusic) {
-                backgroundMusic.volume = 0.5; // Atur volume ke 50%
-                backgroundMusic.play().catch(error => {
-                    console.log("Autoplay ditolak oleh browser.");
-                    document.body.addEventListener('click', () => backgroundMusic.play(), { once: true });
-                });
+                backgroundMusic.currentTime = 0; // Memastikan lagu mulai dari awal
+                backgroundMusic.volume = 0.5;
+                const playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay was prevented. Waiting for another user click to play audio.");
+                        document.body.addEventListener('click', () => backgroundMusic.play(), { once: true });
+                    });
+                }
             }
 
             setTimeout(() => { document.getElementById('welcome-screen').style.display = 'none'; }, 1000);
