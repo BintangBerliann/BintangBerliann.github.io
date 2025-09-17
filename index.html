@@ -158,16 +158,12 @@
             background-size: 100px 100%;
         }
 
-        /* Scene 4: Wisuda (BARU) */
+        /* Scene 4: Wisuda */
         .scene:nth-child(4) {
             background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 60%, #2E8B57 60%, #3CB371 100%);
         }
-        .scene:nth-child(4)::before { /* Tirai panggung */
-            content:''; position: absolute; top:0; left:0; width: 15%; height: 60%; background: #A52A2A;
-        }
-        .scene:nth-child(4)::after { /* Tirai panggung */
-            content:''; position: absolute; top:0; right:0; width: 15%; height: 60%; background: #A52A2A;
-        }
+        .scene:nth-child(4)::before { content:''; position: absolute; top:0; left:0; width: 15%; height: 60%; background: #A52A2A; }
+        .scene:nth-child(4)::after { content:''; position: absolute; top:0; right:0; width: 15%; height: 60%; background: #A52A2A; }
         
         /* Scene 5 & 6: Rooftop */
         .scene:nth-child(5), .scene:nth-child(6) {
@@ -180,15 +176,13 @@
         }
         @keyframes twinkle { from { background-position: 0 0; } to { background-position: -100px 50px; } }
 
-        /* Scene 7: Perpustakaan (BARU) */
+        /* Scene 7: Perpustakaan */
         .scene:nth-child(7) {
             background: linear-gradient(to bottom, #fdf5e6 60%, #8B4513 60%, #A0522D 100%);
         }
-        .scene:nth-child(7)::before { /* Rak buku */
+        .scene:nth-child(7)::before {
             content: ''; position: absolute; top: 10%; left: 0; right: 0; height: 45%;
-            background: repeating-linear-gradient(
-                #D2B48C 0, #D2B48C 10%, #8B4513 10%, #8B4513 12%
-            ), repeating-linear-gradient(90deg, #A0522D 0, #A0522D 2%, transparent 2%, transparent 10%);
+            background: repeating-linear-gradient(#D2B48C 0, #D2B48C 10%, #8B4513 10%, #8B4513 12%), repeating-linear-gradient(90deg, #A0522D 0, #A0522D 2%, transparent 2%, transparent 10%);
             background-size: 100% 100px, 100px 100%;
         }
 
@@ -201,26 +195,17 @@
         .scene:nth-child(8) .scene-text { background: #DCF8C6; border-radius: 15px 15px 0 15px; }
         .scene:nth-child(8) h1, .scene:nth-child(8) p { color: #121212; text-shadow: none; }
 
-        /* Scene 9: Love Hearts (BARU) */
+        /* Scene 9: Love Hearts */
         .scene:nth-child(9) {
-            background-color: #ffc0cb; /* Pink background */
-            overflow: hidden;
+            background-color: #ffc0cb; overflow: hidden;
         }
         .heart {
-            position: absolute;
-            background-color: red;
-            width: 30px;
-            height: 30px;
-            transform: rotate(-45deg);
-            animation: float-heart 10s infinite;
+            position: absolute; background-color: red; width: 30px; height: 30px;
+            transform: rotate(-45deg); animation: float-heart 10s infinite;
         }
         .heart::before, .heart::after {
-            content: '';
-            position: absolute;
-            background-color: red;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+            content: ''; position: absolute; background-color: red;
+            width: 30px; height: 30px; border-radius: 50%;
         }
         .heart::before { top: -15px; left: 0; }
         .heart::after { top: 0; left: 15px; }
@@ -232,19 +217,16 @@
         /* ==== IMAGE PLACEHOLDER STYLES ==== */
         .image-placeholder {
             position: absolute;
-            width: 250px;
-            height: 200px;
-            background-color: #fff; /* Warna frame polaroid */
-            padding: 15px; /* Lebar frame polaroid */
+            width: 220px; /* Ukuran diperkecil */
+            height: 180px;
+            background-color: #fff;
+            padding: 12px; /* Padding disesuaikan */
             border-radius: 3px;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
-            z-index: 101; /* Selalu di atas elemen lain */
+            z-index: 101;
         }
         .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Membuat gambar mengisi frame tanpa gepeng */
-            display: block;
+            width: 100%; height: 100%; object-fit: cover; display: block;
         }
         .image-placeholder::before {
             content: ''; position: absolute; top: -10px; left: 50%;
@@ -253,13 +235,13 @@
             border-left: 1px dashed rgba(0,0,0,0.2); border-right: 1px dashed rgba(0,0,0,0.2);
         }
         
-        /* Posisi dan rotasi unik untuk setiap placeholder */
-        .ph-ch2 { top: 18%; right: 15%; transform: rotate(7deg); }
-        .ph-ch3 { top: 15%; left: 18%; transform: rotate(-6deg); }
-        .ph-ch4 { top: 20%; right: 16%; transform: rotate(5deg); } /* Wisuda */
-        .ph-ch5 { top: 18%; left: 18%; transform: rotate(-8deg); } /* Rooftop */
-        .ph-ch6 { top: 18%; right: 15%; transform: rotate(7deg); } /* Rooftop 2 */
-        .ph-ch7 { top: 15%; left: 18%; transform: rotate(-6deg); } /* Perpustakaan */
+        /* Posisi dan rotasi unik untuk setiap placeholder (DIPERBARUI) */
+        .ph-ch2 { top: 12%; right: 12%; transform: rotate(7deg); }
+        .ph-ch3 { top: 10%; left: 12%; transform: rotate(-6deg); }
+        .ph-ch4 { top: 12%; right: 15%; transform: rotate(5deg); }
+        .ph-ch5 { top: 10%; left: 12%; transform: rotate(-8deg); }
+        .ph-ch6 { top: 12%; right: 12%; transform: rotate(7deg); }
+        .ph-ch7 { top: 10%; left: 12%; transform: rotate(-6deg); }
 
         .scene-text {
             position: relative;
@@ -279,8 +261,11 @@
         .scene h1 { font-size: 3.5rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); transform: translateY(30px); }
         .scene p { font-size: 1.4rem; line-height: 1.8; max-width: 600px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transform: translateY(20px); animation-delay: 0.3s; }
 
+        /* Posisi Karakter Diturunkan */
         #character-me, #character-her {
-            position: fixed; bottom: 38%; transform: translateX(-50%); z-index: 1000;
+            position: fixed;
+            bottom: 30%; /* << PERUBAHAN DI SINI */
+            transform: translateX(-50%); z-index: 1000;
             width: 200px; height: 200px; display: flex; align-items: center; justify-content: center;
         }
         #character-me { left: 48%; }
@@ -316,7 +301,7 @@
         <h1 class="birthday-title">🎉 Happy Birthday! 🎂</h1>
         <p class="birthday-subtitle">A special journey through our memories together</p>
         <div class="character-intro"><p>Today we'll walk through our story together - you and me, side by side.</p></div>
-        <p class="controls-info">Gunakan tombol panah ⬅️ dan ➡️ untuk berjalan</p>
+        <p class="controls-info">Gunakan tombol A dan D untuk berjalan</p>
         <button class="start-button" onclick="startJourney()">Begin Our Walk Together 💕</button>
     </div>
 
@@ -342,7 +327,7 @@
         </section>
 
         <section class="scene">
-            <div class="image-placeholder ph-ch4"><img src="path/to/your/graduation.jpg" alt="Kenangan Wisuda"></div>
+            <div class="image-placeholder ph-ch4"><img src="graduation.jpg" alt="Kenangan Wisuda"></div>
             <div class="scene-text"><h1>Chapter 4: Momen Kelulusan</h1><p>Momen yang ditunggu tiba. Dengan toga kebanggaan, kita merayakan akhir dari satu babak dan awal dari babak yang baru.</p></div>
         </section>
         
@@ -357,7 +342,7 @@
         </section>
 
         <section class="scene">
-            <div class="image-placeholder ph-ch7"><img src="path/to/your/library.jpg" alt="Kenangan Perpustakaan"></div>
+            <div class="image-placeholder ph-ch7"><img src="gramed.jpg" alt="Kenangan Perpustakaan"></div>
             <div class="scene-text"><h1>Chapter 7: Dunia Dalam Kata</h1><p>Di antara rak-rak buku, kita menemukan petualangan baru dan berbagi cerita favorit kita.</p></div>
         </section>
 
@@ -366,7 +351,8 @@
         </section>
         
         <section class="scene">
-            <div id="hearts-container"></div> <div class="scene-text">
+            <div id="hearts-container"></div>
+            <div class="scene-text">
                 <h1>Now & Forever</h1>
                 <p>Happy Birthday! Semoga semua kebaikan dan kebahagiaan selalu menyertaimu. Here's to our endless story! 🥂❤️</p>
             </div>
@@ -374,9 +360,7 @@
     </div>
 
     <script>
-        // Update #world width in JavaScript
         const world = document.getElementById('world');
-        // Script lainnya tetap sama
         const meWalkingFrames = [ 'images/me_walk1.png', 'images/me_walk2.png', 'images/me_walk3.png', 'images/me_walk4.png' ];
         const herWalkingFrames = [ 'images/her_walk1.png', 'images/her_walk2.png', 'images/her_walk3.png', 'images/her_walk4.png' ];
         let frameIndex = 0, walkInterval, currentPosition = 0;
@@ -393,26 +377,19 @@
             document.getElementById('progress-bar').style.display = 'block';
             maxScroll = world.scrollWidth - window.innerWidth;
             setTimeout(() => { document.getElementById('welcome-screen').style.display = 'none'; }, 1000);
-            
-            // Mulai animasi hati
             createHearts();
         }
 
-        // Fungsi untuk membuat hati di Scene 9
         function createHearts() {
             const container = document.querySelector('.scene:nth-child(9)');
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = Math.random() * 5 + 5 + 's'; // Durasi 5-10 detik
+                heart.style.animationDuration = Math.random() * 5 + 5 + 's';
                 heart.style.transform = `rotate(-45deg) scale(${Math.random() * 0.5 + 0.5})`;
                 container.appendChild(heart);
-                
-                // Hapus hati setelah animasi selesai
-                setTimeout(() => {
-                    heart.remove();
-                }, 10000);
+                setTimeout(() => { heart.remove(); }, 10000);
             }, 500);
         }
 
@@ -432,22 +409,29 @@
             characterMeSprite.src = meWalkingFrames[frameIndex]; characterHerSprite.src = herWalkingFrames[frameIndex];
             characterMeSprite.style.transform = 'translateY(0)'; characterHerSprite.style.transform = 'translateY(0)';
         }
+
+        // Fungsi move diubah ke A dan D
         function move() {
-            if (keysPressed['ArrowRight']) { currentPosition = Math.min(currentPosition + walkSpeed, maxScroll); }
-            if (keysPressed['ArrowLeft']) { currentPosition = Math.max(currentPosition - walkSpeed, 0); }
+            if (keysPressed['d']) { currentPosition = Math.min(currentPosition + walkSpeed, maxScroll); }
+            if (keysPressed['a']) { currentPosition = Math.max(currentPosition - walkSpeed, 0); }
             window.scrollTo(currentPosition, 0);
             updateProgress();
-            if (keysPressed['ArrowRight'] || keysPressed['ArrowLeft']) { requestAnimationFrame(move); }
+            if (keysPressed['d'] || keysPressed['a']) { requestAnimationFrame(move); }
         }
+        
+        // Event listener diubah ke A dan D
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-                if (!keysPressed[event.key]) { keysPressed[event.key] = true; startWalkingAnimation(); requestAnimationFrame(move); }
+            const key = event.key.toLowerCase();
+            if (key === 'a' || key === 'd') {
+                if (!keysPressed[key]) { keysPressed[key] = true; startWalkingAnimation(); requestAnimationFrame(move); }
             }
         });
+        
         document.addEventListener('keyup', (event) => {
-            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-                keysPressed[event.key] = false;
-                if (!keysPressed['ArrowLeft'] && !keysPressed['ArrowRight']) { stopWalkingAnimation(); }
+            const key = event.key.toLowerCase();
+            if (key === 'a' || key === 'd') {
+                keysPressed[key] = false;
+                if (!keysPressed['a'] && !keysPressed['d']) { stopWalkingAnimation(); }
             }
         });
         function updateProgress() { progressBar.style.width = Math.min((currentPosition / maxScroll) * 100, 100) + '%'; }
