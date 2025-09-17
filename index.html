@@ -157,24 +157,38 @@
             background-image: repeating-linear-gradient(90deg, #d32f2f 0, #d32f2f 8%, transparent 8%, transparent 10%);
             background-size: 100px 100%;
         }
-
-        /* Scene 4: Wisuda */
-        .scene:nth-child(4) {
-            background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 60%, #2E8B57 60%, #3CB371 100%);
-        }
-        .scene:nth-child(4)::before { content:''; position: absolute; top:0; left:0; width: 15%; height: 60%; background: #A52A2A; }
-        .scene:nth-child(4)::after { content:''; position: absolute; top:0; right:0; width: 15%; height: 60%; background: #A52A2A; }
         
-        /* Scene 5 & 6: Rooftop */
-        .scene:nth-child(5), .scene:nth-child(6) {
+        /* Scene 4 & 6: Rooftop */
+        .scene:nth-child(4), .scene:nth-child(6) {
             background: linear-gradient(to bottom, #0c0a1a, #2c1a3e 70%, #4a4a4a 70%, #3c3c3c 100%);
         }
-        .scene:nth-child(5)::before, .scene:nth-child(6)::before {
+        .scene:nth-child(4)::before, .scene:nth-child(6)::before {
              content: ' '; position: absolute; top:0; left:0; right:0; bottom:0;
              background-image: radial-gradient(circle, white 1px, transparent 1px);
              background-size: 50px 50px; opacity: 0.5; animation: twinkle 5s infinite linear;
         }
         @keyframes twinkle { from { background-position: 0 0; } to { background-position: -100px 50px; } }
+        
+        /* Scene 6: Tambahan Bulan */
+        .scene:nth-child(6)::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            width: 100px;
+            height: 100px;
+            background: #f5f3ce;
+            border-radius: 50%;
+            box-shadow: 0 0 50px #f5f3ce, 0 0 100px #f5f3ce;
+        }
+        
+        /* Scene 5: Wisuda */
+        .scene:nth-child(5) {
+            background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 60%, #2E8B57 60%, #3CB371 100%);
+        }
+        .scene:nth-child(5)::before { content:''; position: absolute; top:0; left:0; width: 15%; height: 60%; background: #A52A2A; }
+        .scene:nth-child(5)::after { content:''; position: absolute; top:0; right:0; width: 15%; height: 60%; background: #A52A2A; }
+        
 
         /* Scene 7: Perpustakaan */
         .scene:nth-child(7) {
@@ -217,16 +231,16 @@
         /* ==== IMAGE PLACEHOLDER STYLES ==== */
         .image-placeholder {
             position: absolute;
-            width: 220px; /* Ukuran diperkecil */
+            width: 220px;
             height: 180px;
             background-color: #fff;
-            padding: 12px; /* Padding disesuaikan */
+            padding: 12px;
             border-radius: 3px;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
             z-index: 101;
         }
         .image-placeholder img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
+            width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
         }
         .image-placeholder::before {
             content: ''; position: absolute; top: -10px; left: 50%;
@@ -238,8 +252,8 @@
         /* Posisi dan rotasi unik untuk setiap placeholder (DIPERBARUI) */
         .ph-ch2 { top: 12%; right: 12%; transform: rotate(7deg); }
         .ph-ch3 { top: 10%; left: 12%; transform: rotate(-6deg); }
-        .ph-ch4 { top: 12%; right: 15%; transform: rotate(5deg); }
-        .ph-ch5 { top: 10%; left: 12%; transform: rotate(-8deg); }
+        .ph-ch4 { top: 10%; right: 12%; transform: rotate(5deg); }
+        .ph-ch5 { top: 12%; left: 15%; transform: rotate(-8deg); }
         .ph-ch6 { top: 12%; right: 12%; transform: rotate(7deg); }
         .ph-ch7 { top: 10%; left: 12%; transform: rotate(-6deg); }
 
@@ -261,10 +275,9 @@
         .scene h1 { font-size: 3.5rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); transform: translateY(30px); }
         .scene p { font-size: 1.4rem; line-height: 1.8; max-width: 600px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); transform: translateY(20px); animation-delay: 0.3s; }
 
-        /* Posisi Karakter Diturunkan */
         #character-me, #character-her {
             position: fixed;
-            bottom: 30%; /* << PERUBAHAN DI SINI */
+            bottom: 30%;
             transform: translateX(-50%); z-index: 1000;
             width: 200px; height: 200px; display: flex; align-items: center; justify-content: center;
         }
@@ -298,10 +311,10 @@
 </head>
 <body>
     <div id="welcome-screen">
-        <h1 class="birthday-title">🎉 Happy Birthday! 🎂</h1>
-        <p class="birthday-subtitle">A special journey through our memories together</p>
-        <div class="character-intro"><p>Today we'll walk through our story together - you and me, side by side.</p></div>
-        <p class="controls-info">Gunakan tombol A dan D untuk berjalan</p>
+        <h1 class="birthday-title">🎂 Happy Birthday My Dear Piaa 🎂</h1>
+        <p class="birthday-subtitle">Here's my grand present for you: A special journey through our memories together.</p>
+        <div class="character-intro"><p>Today we'll walk through our story together, you and me, side by side.</p></div>
+        <p class="controls-info">Use A and D to walk</p>
         <button class="start-button" onclick="startJourney()">Begin Our Walk Together 💕</button>
     </div>
 
@@ -313,48 +326,72 @@
 
     <div id="world">
         <section class="scene">
-            <div class="scene-text"><h1>Chapter 1: Awal Kelas Kita</h1><p>Di antara papan tulis dan deretan bangku, di sanalah cerita kita dimulai...</p></div>
+            <div class="scene-text">
+                <h1>Chapter 1: The First Time We Met</h1>
+                <p>Amidst the classroom buzz, our story began. You might not have noticed my presence then, but I had already started admiring you in silence. We barely spoke in high school, separated by seats and different group assignments, yet you always seemed cool in my eyes.</p>
+            </div>
         </section>
 
         <section class="scene">
             <div class="image-placeholder ph-ch2"><img src="class.jpg" alt="Kenangan Kelas"></div>
-            <div class="scene-text"><h1>Chapter 2: Ujian & Dukungan</h1><p>Setiap ujian dan tugas berat terasa lebih ringan karena kita menghadapinya bersama...</p></div>
+            <div class="scene-text">
+                <h1>Chapter 2: A Bridge of Conversations</h1>
+                <p>Our conversations truly began to flow during the extra classes for university entrance exams. It was then that the quiet admiration I held for you started to find its voice, turning silent observations into shared thoughts and laughter.</p>
+            </div>
         </section>
 
         <section class="scene">
             <div class="image-placeholder ph-ch3"><img src="bioskop.jpg" alt="Kenangan Bioskop"></div>
-            <div class="scene-text"><h1>Chapter 3: Layar & Cerita</h1><p>Dari ruang kelas, petualangan kita berlanjut ke dunia lain di balik layar bioskop...</p></div>
+            <div class="scene-text">
+                <h1>Chapter 3: The Movie Watch Party</h1>
+                <p>During an exam break, I gathered my courage and asked you to watch "Suzume" with our friends. I was thrilled when you agreed. Throughout the movie, I found myself stealing glances, hoping for a seat beside you, and watching your reactions to every scene.</p>
+            </div>
         </section>
 
         <section class="scene">
-            <div class="image-placeholder ph-ch4"><img src="graduation.jpg" alt="Kenangan Wisuda"></div>
-            <div class="scene-text"><h1>Chapter 4: Momen Kelulusan</h1><p>Momen yang ditunggu tiba. Dengan toga kebanggaan, kita merayakan akhir dari satu babak dan awal dari babak yang baru.</p></div>
+            <div class="image-placeholder ph-ch4"><img src="event1.jpg" alt="Kenangan Rooftop"></div>
+            <div class="scene-text">
+                <h1>Chapter 4: Our First "Date"</h1>
+                <p>This was the first time we texted properly. I asked you to attend an event, just the two of us, and was surprised when you said yes. Under the bright stars, we strolled around, and I felt a profound sense of safety and joy just being by your side. After that night, our texts became more frequent.</p>
+            </div>
         </section>
         
         <section class="scene">
-            <div class="image-placeholder ph-ch5"><img src="event1.jpg" alt="Kenangan Rooftop"></div>
-            <div class="scene-text"><h1>Chapter 5: Di Atas Kota</h1><p>Di atas gedung, di bawah langit malam, kita berbagi mimpi dan rahasia...</p></div>
+            <div class="image-placeholder ph-ch5"><img src="graduation.jpg" alt="Kenangan Wisuda"></div>
+            <div class="scene-text">
+                <h1>Chapter 5: Graduation Day</h1>
+                <p>On our graduation day, I knew I couldn't miss the chance to make it special. I gave you a bouquet of flowers, a moment my dad witnessed. He told my mom about it, and for the first time, my parents knew about the girl who meant so much to me.</p>
+            </div>
         </section>
 
         <section class="scene">
             <div class="image-placeholder ph-ch6"><img src="path/to/your/rooftop2.jpg" alt="Kenangan Bintang"></div>
-            <div class="scene-text"><h1>Chapter 6: Bintang & Harapan</h1><p>Setiap bintang yang kita lihat menjadi saksi dari setiap harapan yang kita ucapkan...</p></div>
+            <div class="scene-text">
+                <h1>Chapter 6: A Confession Under the Moon</h1>
+                <p>When you told me you were accepted to UNEJ, I thought it might be the last time I'd see you. As you were about to board the bus, I nervously confessed my feelings—not to ask you to be mine, but simply to let you know how much you meant to me.</p>
+            </div>
         </section>
 
         <section class="scene">
             <div class="image-placeholder ph-ch7"><img src="gramed.jpg" alt="Kenangan Perpustakaan"></div>
-            <div class="scene-text"><h1>Chapter 7: Dunia Dalam Kata</h1><p>Di antara rak-rak buku, kita menemukan petualangan baru dan berbagi cerita favorit kita.</p></div>
+            <div class="scene-text">
+                <h1>Chapter 7: Between The Bookshelves</h1>
+                <p>Even though we were far apart, our story continued. We went on a "date" at Gramedia, and I bought you a book. It was a simple gesture, but it felt like another chapter in our shared adventure, finding worlds together even when we were worlds apart.</p>
+            </div>
         </section>
 
         <section class="scene">
-            <div class="scene-text"><h1>Chapter 8: Cerita Tanpa Batas</h1><p>Dan bahkan saat jarak memisahkan, cerita kita tidak pernah berhenti. Ribuan notifikasi menjadi bukti.</p></div>
+            <div class="scene-text">
+                <h1>Chapter 8: Close at Heart</h1>
+                <p>Separated by distance, our connection only grew stronger. I decided to open up and confess to you for the second time. The moment I realized you felt the same way about me was pure happiness.</p>
+            </div>
         </section>
         
         <section class="scene">
             <div id="hearts-container"></div>
             <div class="scene-text">
                 <h1>Now & Forever</h1>
-                <p>Happy Birthday! Semoga semua kebaikan dan kebahagiaan selalu menyertaimu. Here's to our endless story! 🥂❤️</p>
+                <p>And here we are now. Happy birthday, my love. I hope you are blessed with endless happiness. I hope we continue to love each other until our very last breath, and I hope for a future with you. You are the only one I want. Thank you for coming into my life. <br> - Yours, <br> Bintang. </p>
             </div>
         </section>
     </div>
@@ -382,6 +419,7 @@
 
         function createHearts() {
             const container = document.querySelector('.scene:nth-child(9)');
+            if (!container) return;
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
@@ -410,7 +448,6 @@
             characterMeSprite.style.transform = 'translateY(0)'; characterHerSprite.style.transform = 'translateY(0)';
         }
 
-        // Fungsi move diubah ke A dan D
         function move() {
             if (keysPressed['d']) { currentPosition = Math.min(currentPosition + walkSpeed, maxScroll); }
             if (keysPressed['a']) { currentPosition = Math.max(currentPosition - walkSpeed, 0); }
@@ -419,7 +456,6 @@
             if (keysPressed['d'] || keysPressed['a']) { requestAnimationFrame(move); }
         }
         
-        // Event listener diubah ke A dan D
         document.addEventListener('keydown', (event) => {
             const key = event.key.toLowerCase();
             if (key === 'a' || key === 'd') {
